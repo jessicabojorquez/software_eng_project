@@ -15,37 +15,33 @@ h1 has the tittle, don't use h1 on anything else so that the css does not get co
       <!--menu class holds the buttons-->
       <div class="buttons-div">
 
+        
         <!--Upload Model-->
         <div class="upload-model-div">
-          <button @click="toggleSomeFlag_1">
-            <span v-if="model_uploaded">Upload Model   </span>
-            <span v-else>Take user to Upload page</span>
-          </button>
+          <UploadButtonVue />
         </div>
 
-        <!--Upload Images-->
+        <!--Upload Images
         <div class="upload-images-div">
           <button @click="toggleSomeFlag_2">
             <span v-if="images_uploaded">Upload Images</span>
             <span v-else>Insert Drop Down Menu</span>
           </button>
-        </div>
-
+          
+        </div>-->
+        
         <!--Available Models-->
         <div class="available-models-div">
-          <button @click="toggleSomeFlag_3">
-            <span v-if="display_available_models">Available Models   </span>
-            <span v-else>Insert Drop Down Menu</span>
-          </button>
+          <FlagButtonVue v-bind='available_models'/>
         </div>
 
-        <!--Upload-->
+        <!--Upload
         <a href="#" class="upload-button-div">
           <button @click="toggleSomeFlag_4">
             <span v-if="upload_pushed">Upload</span>
             <span v-else>Refresh</span>
           </button>
-        </a>
+        </a>-->
 
         <!--Round Button-->
         <a href="#" class="round-button" @click="toggleSomeFlag">
@@ -56,7 +52,7 @@ h1 has the tittle, don't use h1 on anything else so that the css does not get co
           <span v-else>Upload</span>
           -->
           <span v-if="someFlag"></span>
-          <span v-else></span>
+          <span v-else>Upload</span>
         </a>
 
       </div>
@@ -66,15 +62,23 @@ h1 has the tittle, don't use h1 on anything else so that the css does not get co
 
 <script>
 //import { MDBBtn, MDBIcon } from "mdb-vue-ui-kit";
+import UploadButtonVue from './components/UploadButton.vue'
+import FlagButtonVue from './components/FlagButton.vue'
 export default {
   name: 'App',
   components: {
+    UploadButtonVue,
+    FlagButtonVue
     //MDBBtn,
     //MDBIcon
   },
   data () {
     return {
       //variables to set to true or false or to use for function calling
+      available_models:{
+            msgClicked:'Drop-Down List',
+            msgNotClicked:'Select Available Model'
+        },
       model_uploaded: true,
       images_uploaded: true,
       display_available_models: true,
@@ -195,13 +199,15 @@ body {
 
 /**buton 5 (the triangle inside it, needs to be centers) */
 .play-arrow-right {
+  position:absolute;
+  right: 28px;
+  top:95px;
   width: 0; 
   height: 0; 
   border-top: 20px solid transparent;
   border-bottom: 20px solid transparent;
-  border-left: 20px solid green;
-  float:initial
-
+  border-left: 30px solid green;
+  float:initial;
 }
 
 /**_______________________________________h1 start (modify inside)______________________________ */
