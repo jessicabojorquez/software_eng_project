@@ -86,6 +86,7 @@ class Visualizer():
 
 
     def vis(self):
+
         all_layers = [key for key in list(dict(self.model.named_modules()).keys()) if (key != '' and 'fc' not in key)]
         self.target_layers = [getattr(self.model,all_layers[0])]
 
@@ -93,27 +94,19 @@ class Visualizer():
 
         cam = GradCAM(model=self.model, target_layers=self.target_layers, use_cuda=True)
         targets = [ClassifierOutputTarget(9)]
-
         grayscale_cam = cam(input_tensor=self.input_tensor, targets=targets)
         grayscale_cam = grayscale_cam[0, :]
         heatmap = grayscale_cam
         input_tensor = (self.input_tensor.squeeze(0).squeeze(0)).numpy()
         input_tensor = np.stack([input_tensor, input_tensor, input_tensor], axis=2)
-        # img = cv2.imread('./data/Elephant/data/05fig34.jpg')
         img = input_tensor * 255
-        #heatmap = np.resize(heatmap,(img.shape[1], img.shape[0],))
         heatmap = cv2.resize(heatmap, (img.shape[1], img.shape[0]))
-        #input_tensor = np.stack([input_tensor, input_tensor, input_tensor], axis=2)
         heatmap = np.stack([heatmap,heatmap,heatmap],axis=2)
         heatmap = np.uint8(255 * heatmap)
-        #heatmap =heatmap.astype(np.uint8)
-
         heatmap = cv2.applyColorMap(heatmap, cv2.COLORMAP_JET)
 
 
         superimposed_img = heatmap * 0.5 + img * 0.5
-        # plt.imshow(superimposed_img)
-        # plt.show()
         cv2.imwrite('./map.jpg', superimposed_img)
 
         return
