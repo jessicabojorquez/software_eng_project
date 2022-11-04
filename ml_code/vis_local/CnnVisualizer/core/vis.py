@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 
 def nothing():
     input_shape = (1, 28, 28)
-    model = torch.load('net.pth')
+    model = torch.load('net.pth', map_location=torch.device('cuda' if torch.cuda.is_available() else 'cpu'))
     train_ds = datasets.MNIST('./data', train=True, download=True,
                               transform=transforms.Compose([transforms.ToTensor()]))
 
@@ -68,7 +68,12 @@ class Visualizer():
     def __init__(self,model_code,model_ckpt,input_path):
         copy2(model_code,'.')
 
-        self.model = torch.load(model_ckpt)
+        try:
+            self.model = torch.load(model_ckpt, map_location=torch.device('cuda' if torch.cuda.is_available() else 'cpu'))
+        except Exception as e:
+            if str(e) == "Ran out of input" or str(e).find("unpickling") >= 0: # Invalid input file
+                print("Invalid .pth file")
+                raise ValueError("Invalid .pth file")
 
         self.input_tensor = load_input(input_path)
         self.input_shape = self.input_tensor.shape
@@ -92,9 +97,14 @@ class Visualizer():
 
         self.target_layers = [self.model.conv1, self.model.pool, self.model.conv2]
 
-        cam = GradCAM(model=self.model, target_layers=self.target_layers, use_cuda=True)
+        cam = GradCAM(model=self.model, target_layers=self.target_layers, use_cuda=True if torch.cuda.is_available() else False)
         targets = [ClassifierOutputTarget(9)]
-        grayscale_cam = cam(input_tensor=self.input_tensor, targets=targets)
+        try:
+            grayscale_cam = cam(input_tensor=self.input_tensor, targets=targets)
+        except RuntimeError as e:
+            if str(e).find("is invalid for input of size") >= 0:
+                print("Input Image is not the right size!")
+                raise ValueError("Input Image is not the right size!")
         grayscale_cam = grayscale_cam[0, :]
         heatmap = grayscale_cam
         input_tensor = (self.input_tensor.squeeze(0).squeeze(0)).numpy()
