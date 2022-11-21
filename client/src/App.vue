@@ -18,7 +18,7 @@ h1 has the tittle, don't use h1 on anything else so that the css does not get co
         
         <!--Upload Model-->
         <div class="upload-model-div">
-          <UploadButtonVue />
+          <UploadButton />
         </div>
 
         <!--Upload Images
@@ -32,7 +32,8 @@ h1 has the tittle, don't use h1 on anything else so that the css does not get co
         
         <!--Available Models-->
         <div class="available-models-div">
-          <FlagButtonVue v-bind='available_models'/>
+          <!--<FlagButton v-bind='available_models'/>-->
+          <Btn  :height=80 :width=50 :src=source :label=myl />
         </div>
 
         <!--Upload
@@ -62,13 +63,15 @@ h1 has the tittle, don't use h1 on anything else so that the css does not get co
 
 <script>
 //import { MDBBtn, MDBIcon } from "mdb-vue-ui-kit";
-import UploadButtonVue from './components/UploadButton.vue'
-import FlagButtonVue from './components/FlagButton.vue'
+import UploadButton from './components/UploadButton.vue'
+//import FlagButton from './components/FlagButton.vue'
+import Btn from './components/Drawable.vue'
 export default {
   name: 'App',
   components: {
-    UploadButtonVue,
-    FlagButtonVue
+    UploadButton,
+    //FlagButton,
+    Btn
     //MDBBtn,
     //MDBIcon
   },
@@ -79,6 +82,9 @@ export default {
             msgClicked:'Drop-Down List',
             msgNotClicked:'Select Available Model'
         },
+      source:"'https://www.freecodecamp.org/news/content/images/2021/06/w-qjCHPZbeXCQ-unsplash.jpg'",
+      source2:"../assets/logo.png",
+      myl:"hello",
       model_uploaded: true,
       images_uploaded: true,
       display_available_models: true,
