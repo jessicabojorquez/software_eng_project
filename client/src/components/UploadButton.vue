@@ -12,7 +12,8 @@ export default {
         post:{
             msgClicked:'Files Uploaded',
             msgNotClicked:'Upload'
-        }
+        },
+        something:'Hello world'
     }
   }
 }
@@ -29,7 +30,7 @@ export default {
   visibility: hidden;
 }
 .custom-file-input::before {
-  content: 'Select a model, checkpoint and image';
+  content: "mehg";
   display: inline-block;
   background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
   border: 1px solid #999;
