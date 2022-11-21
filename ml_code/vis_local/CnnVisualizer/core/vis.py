@@ -66,8 +66,9 @@ def nothing():
 
 class Visualizer():
     def __init__(self,model_code,model_ckpt,input_path):
-        copy2(model_code,'.')
+        copy2(model_code,'.') # Bring .py file into correct directory
 
+        # Load the model from the .pth file -- also does some error checking and handling
         try:
             self.model = torch.load(model_ckpt, map_location=torch.device('cuda' if torch.cuda.is_available() else 'cpu'))
         except Exception as e:
@@ -92,11 +93,13 @@ class Visualizer():
 
     def vis(self):
 
+        # Choose which layers we want to visualize heatmaps for
         all_layers = [key for key in list(dict(self.model.named_modules()).keys()) if (key != '' and 'fc' not in key)]
         self.target_layers = [getattr(self.model,all_layers[0])]
 
         self.target_layers = [self.model.conv1, self.model.pool, self.model.conv2]
 
+        # Create GradCAM object with layers and model specified
         cam = GradCAM(model=self.model, target_layers=self.target_layers, use_cuda=True if torch.cuda.is_available() else False)
         targets = [ClassifierOutputTarget(9)]
         try:
@@ -106,6 +109,8 @@ class Visualizer():
                 print("Input Image is not the right size!")
                 raise ValueError("Input Image is not the right size!")
         grayscale_cam = grayscale_cam[0, :]
+
+        # Get heatmap from GradCAM and manipulate it to visualize it easily
         heatmap = grayscale_cam
         input_tensor = (self.input_tensor.squeeze(0).squeeze(0)).numpy()
         input_tensor = np.stack([input_tensor, input_tensor, input_tensor], axis=2)
