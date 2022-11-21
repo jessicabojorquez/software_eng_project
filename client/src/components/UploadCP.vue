@@ -1,4 +1,7 @@
 <!--
+
+  UploadCP: For the Your Checkpoints File on the "Upload Your Own Model" Page
+  
   The Drawable component takes a height, width, and label, and creates a button of the specified size with the specified label, 
   whose background image should be in the assets field, and is linked to in the style component at the bottom. 
   The style component can also be customized with any other components that should be included.
