@@ -19,5 +19,7 @@ from django.urls import path
 from visualizer_server import views as server_views
 
 urlpatterns = [
+    path('admin', admin.site.urls),
     path('', server_views.index_template),
+    path('testing', server_views.upload),
 ]

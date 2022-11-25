@@ -44,7 +44,7 @@ h1 has the tittle, don't use h1 on anything else so that the css does not get co
         </a>-->
 
         <!--Round Button-->
-        <a href="#" class="round-button" @click="toggleSomeFlag">
+        <a href="#" class="round-button" @click="toggleSomeFlag_1">
           <div class="play-arrow-right"></div>
           <!-- To help see how this button works, uncomment this and comment next  2 lines of code
             (left like this to add functionality later)
@@ -64,6 +64,7 @@ h1 has the tittle, don't use h1 on anything else so that the css does not get co
 //import { MDBBtn, MDBIcon } from "mdb-vue-ui-kit";
 import UploadButtonVue from './components/UploadButton.vue'
 import FlagButtonVue from './components/FlagButton.vue'
+import uploadFile from './API/API'
 export default {
   name: 'App',
   components: {
@@ -72,6 +73,7 @@ export default {
     //MDBBtn,
     //MDBIcon
   },
+
   data () {
     return {
       //variables to set to true or false or to use for function calling
@@ -88,7 +90,8 @@ export default {
   methods: {
     //toy functions to then be replaced by real functions that do stuff for cnn visualizations
     toggleSomeFlag_1() {
-            this.model_uploaded = !this.model_uploaded
+      console.log("hello")
+      uploadFile()
     },
     toggleSomeFlag_2() {
             this.images_uploaded = !this.images_uploaded
