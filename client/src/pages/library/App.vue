@@ -1,7 +1,83 @@
-<!DOCTYPE html>
-<html>
+<script>
+
+export default {
+  methods: {
+    output_func() {
+            window.location.href="output.html";
+        },
+  }
+}
+</script>
+
+<template>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+
+<!-- ADDED <a> TAG TO TRY TO DO THE GOVER THING ON THE BUTTON WITH DIFF color
+    MIGHT NEED OT WATCH TUTORIAL TO SEE HOW TO CHANGE THAT   
+    i DO HAVE A BUTTON ABOVE FOR TESTING
+    THE COLOR GREEN ONT HE BUTOTN IS GIVING ISSUES
+
+    ********
+    TRY TO REMOVE THE COLOR GREEN AND SEE IF ITS HOVERS 
+-->
+
+<!--
+<div class="top" id="top">
+    <div class="centered">
+        <h2>Page Tittle</h2>
+        <p>Some text.</p>
+    </div>
+    <button class="hi">hi
+
+        <img src="img_avatar.png" alt="Avatar man">
+    </button>
+</div>-->
+<!-- Navbar-->
+<header class="header">
+    <nav class="navbar">
+        <div class="top-container"><a href="#" class="navbar-logo text-uppercase font-weight-bold">See-NN</a>
+            
+            <div id="navbarSupportedContent" class="collapse navbar-collapse">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a href="index.html" class="nav-menu-options text-uppercase font-weight-bold">Home</a></li> 
+                    <li class="nav-item"><a href="about.html" class="nav-menu-options text-uppercase font-weight-bold">About the Team</a></li>
+                    <li class="nav-item"><a href="howitworks.html" class="nav-menu-options text-uppercase font-weight-bold">How it works</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="bottom-container" id ="bottom-container">
+    
+    
+    <button  @click="output_func()" type="button" class="split left-button" id="upload-button">
+    <!--<div class="centered">-->
+        <img src="../../assets/icons8-mind-map-50.png" alt="Avatar woman">
+        <h2>Choose Model 1</h2>
+        <p>This model blah blah.</p>
+       
+    <!--</div>-->
+    </button>
+
+
+
+    <button  @click="output_func()" type="button" class="split right-button" id="use-existing-button">
+    <div class="centered">
+        <img src="../../assets/icons8-mind-map-50.png" alt="Avatar man">
+        <h2>Choose Model 2</h2>
+        <p>This model blah blah.</p>
+    </div>
+    </button>
+
+</div>
+</body>
+</template> 
+
 <style>
     body {
         font-family: Arial;
@@ -23,7 +99,7 @@
         width: 50%;
         height: 150%; /*600px;*/
         font-family: Arial;
-        color: chocolate;
+        color: white;
         /*border: none;*/
         /*border-color: red;*/
         border-radius:10px  /*round corner*/
@@ -37,25 +113,22 @@
 
     .left-button {
         left: 0%;
-        background-color: cornsilk; 
+        background-color: DarkKhaki; 
         
     }
     .right-button {
         right: 0%;
-        background-color: cornsilk; 
-    }
-    .hi {
-        /*background-color: DarkKhaki; */
+        background-color: DarkKhaki; /*DarkOliveGreen; */
     }
 
     .right-button:hover {
-        background-color:cornflowerblue;
+        background-color:olive;
         transition: 0.5s;
         box-shadow: 0 0 0 4px DarkOliveGreen;
     }
 
     .left-button:hover {
-        background-color:cornflowerblue;
+        background-color:olive;
         transition: 0.5s;
         box-shadow: 0 0 0 4px DarkOliveGreen;
     }
@@ -101,7 +174,7 @@
     
     .navbar .navbar-logo {
         color: DarkOliveGreen;
-        font-size: 3.6em;
+        font-size: 5.6em;
         font-family: Impact,Cursive, sans-serif;
         /*border: 3px solid green;
         padding: 10px;*/
@@ -166,43 +239,6 @@
       }
       .active {
         background-color: #04AA6D;
-    }
-
-    .team{
-        width:500px; /* or whatever width you want. */
-        max-width:500px; /* or whatever width you want. */
-    }
+      }
 
 </style>
-</head>
-<body>
-
-
-<!-- Navbar-->
-<header class="header">
-    <nav class="navbar">
-        <div class="top-container"><a href="#" class="navbar-logo text-uppercase font-weight-bold">See-NN</a>
-            <div id="navbarSupportedContent" class="collapse navbar-collapse">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a href="index.html" class="nav-menu-options text-uppercase font-weight-bold">Home</a></li> 
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
-
-<div class="team">
-
-<button> UploadFile </button>
-
-</div>
-
-<div class="bottom-container" id ="bottom-container">
-    
-    
-   
-
-
-</div>
-</body>
-</html> 
