@@ -11,9 +11,9 @@ from CnnVisualizer.core.vis import Visualizer
 
 def main(args):
     assert test_01()
-    assert test_02()
-    assert test_03()
-    assert test_04()
+    # assert test_02()
+    # assert test_03()
+    # assert test_04()
     return
 
 def test_01(): # Test where the model successfully predicts the class
