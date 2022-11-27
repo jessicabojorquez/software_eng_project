@@ -125,13 +125,13 @@ export default {
     }
 
     .right-button:hover {
-        background-color:olive;
+        background-color:BurlyWood; /*olive;*/
         transition: 0.5s;
         box-shadow: 0 0 0 4px DarkOliveGreen;
     }
 
     .left-button:hover {
-        background-color:olive;
+        background-color:BurlyWood; /*olive;*/
         transition: 0.5s;
         box-shadow: 0 0 0 4px DarkOliveGreen;
     }
