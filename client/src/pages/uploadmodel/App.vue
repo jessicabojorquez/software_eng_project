@@ -1,9 +1,44 @@
+
+<script>
+import axios from 'axios'
+//import { defineComponent } from 'vue'
+
+// import axios from 'axios'
+
+export default {
+methods: {
+  upload(event){
+    let data = new FormData();
+    let file = event.target.files[0];
+    data.append('name', 'my-file')
+    data.append('file', file)
+    let config = {
+      header : {
+       'Content-Type' : 'multipart/form-data'
+     }
+    }
+
+    //Axios is a promise-based HTTP client library for both browsers and Node.js applications
+    axios.post('/api', data, config).then(
+    //   response => {
+    //   }
+    )
+  }
+}
+}
+
+// };
+</script>
+
+
+
 <template>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" 
           href=
 "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 <body>
 
@@ -31,9 +66,27 @@
             <!--Button to upload .pth-->
             <div class="custom-file-upload in-all">
 
-
-
                 <label class="custom-file-upload upload1"> 
+                    <i class="fa fa-cloud-upload"></i>  Upload PyTorch file with extension <strong>.pth</strong>:
+                    <input type="file"  @change="upload($event)" id="file-input" name="pytorch_file" required >
+                </label>
+               
+                <label class="custom-file-upload upload2"> 
+                    <i class="fa fa-cloud-upload"></i>  Upload Python file with extension <strong>.py</strong>:
+                    <input type="file"  @change="upload($event)" id="file-input" name="python_file" required >
+                </label>
+
+                <label class="custom-file-upload upload3"> 
+                    <i class="fa fa-cloud-upload"></i> Upload Image <strong>jpeg</strong> or <strong>png</strong>:
+                    <input type="file"  @change="upload($event)" id="file-input" name="input_image" required>
+                </label>
+
+
+
+
+
+
+                <!-- <label class="custom-file-upload upload1"> 
                     <i class="fa fa-cloud-upload"></i>  Upload PyTorch file with extension <strong>.pth</strong>:
                     <input  type="file" name="pytorch_file" required />
                 </label>
@@ -46,9 +99,9 @@
                 <label class="custom-file-upload upload3">
                     <i class="fa fa-cloud-upload" aria-hidden="true"></i>    Upload Image <strong>jpeg</strong> or <strong>png</strong>:   
                     <input type="file" name="input_image" required />
-                </label>
+                </label> -->
 
-                <input type="submit" value="Submit!" />
+                
 
                 <!--
                 <input id="fileUpload" type="file" hidden>
@@ -68,7 +121,7 @@
                 <button @click="chooseFiles()">Upload <strong>.jpeg</strong>/<strong>.png</strong></button>
                 -->
 
-
+                <input type="submit" value="Submit!" />
             </div>
         </form>
 </div>
