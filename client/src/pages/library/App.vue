@@ -1,6 +1,11 @@
 <script>
 
 export default {
+    data() {
+        return {
+            source: "../../assets/output.json"
+        }
+    },
   methods: {
     output_func() {
             window.location.href="output.html";
@@ -55,7 +60,7 @@ export default {
 <div class="bottom-container" id ="bottom-container">
     
     
-    <button  @click="output_func()" type="button" class="split left-button" id="upload-button">
+    <button  @click="output_func()" :src=source type="button" class="split left-button" id="upload-button">
     <!--<div class="centered">-->
         <img src="../../assets/icons8-mind-map-50.png" alt="Avatar woman">
         <h2>Choose Model 1</h2>
