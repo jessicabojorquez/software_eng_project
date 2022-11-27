@@ -1,3 +1,69 @@
+<script>
+
+export default {
+  props:{
+    src: String
+  },
+  data() {
+    return {
+        dataList: []
+    };
+  },
+  created() {
+    fetch("test/output.json")
+            .then(response => response.json())
+            .then(data => (this.dataList = data));
+  },
+  computed:{
+    numLayers() {
+        return this.dataList.info.num_layers
+    },
+    imagePaths() {
+        var temp=[]
+        for (let i = 0; i<this.numLayers;i++)
+        {
+            //temp[i]="../../../public/test/"+this.dataList.layer_info[i].output_path.substring(2);
+            temp[i]="test/"+this.dataList.layer_info[i].output_path.substring(2);
+        }
+        return temp
+    },
+    imageLabels() {
+        var temp=[]
+        for (let i = 0; i<this.numLayers;i++)
+        {
+            var base=this.dataList.layer_info[i]
+
+            temp[i]=base.output_shape[1]+' * '+base.output_shape[2]+' * '+base.output_shape[3]
+        }
+        return temp
+    },
+    isActive() {
+        var temp = []
+        for (let i = 0; i<10;i++)
+        {
+            if (i<this.numLayers)
+            {
+                temp[i]=true;
+            }
+            else {
+                temp[i]=false;
+            }
+        }
+        return temp
+    },
+    imageHeight() {
+        let height=screen.height
+        return height/4
+    }
+  },
+  methods: {
+  }
+};
+</script>
+
+
+
+
 <template>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,11 +87,60 @@
 
 <div class="team">
 
-        <p>
-        display stuff
-        </p>
+        <div class="grid-container" :class="{ four: numLayers==4, six: numLayers==6, eight:numLayers==8, ten: numLayers==10}" >
+        <figure class="grid-item" :class="{ hide: !isActive[0]}">
+        <img :src="imagePaths[0]" :height=imageHeight alt="">
+        <figcaption>{{imageLabels[0]}}</figcaption>
+        </figure>
 
-</div>
+        <figure class="grid-item" :class="{ hide: !isActive[1]}">
+        <img :src="imagePaths[1]" :height=imageHeight alt="">
+        <figcaption>{{imageLabels[1]}}</figcaption>
+        </figure>
+
+        <figure class="grid-item" :class="{ hide: !isActive[2]}">
+        <img :src="imagePaths[2]" :height=imageHeight alt="">
+        <figcaption>{{imageLabels[2]}}</figcaption>
+        </figure>
+
+        <figure class="grid-item" :class="{ hide: !isActive[3]}">
+        <img :src="imagePaths[3]" :height=imageHeight alt="">
+        <figcaption>{{imageLabels[3]}}</figcaption>
+        </figure>
+
+        <figure class="grid-item" :class="{ hide: !isActive[4]}">
+        <img :src="imagePaths[4]" :height=imageHeight alt="">
+        <figcaption>{{imageLabels[4]}}</figcaption>
+        </figure>
+
+        <figure class="grid-item" :class="{ hide: !isActive[5]}">
+        <img :src="imagePaths[5]" :height=imageHeight alt="">
+        <figcaption>{{imageLabels[5]}}</figcaption>
+        </figure>
+
+        <figure class="grid-item" :class="{ hide: !isActive[6]}">
+        <img :src="imagePaths[6]" :height=imageHeight alt="">
+        <figcaption>{{imageLabels[6]}}</figcaption>
+        </figure>
+
+        <figure class="grid-item" :class="{ hide: !isActive[7]}">
+        <img :src="imagePaths[7]" :height=imageHeight alt="">
+        <figcaption>{{imageLabels[7]}}</figcaption>
+        </figure>
+
+        <figure class="grid-item" :class="{ hide: !isActive[8]}">
+        <img :src="imagePaths[8]" :height=imageHeight alt="">
+        <figcaption>{{imageLabels[8]}}</figcaption>
+        </figure>
+
+        <figure class="grid-item" :class="{ hide: !isActive[9]}">
+        <img :src="imagePaths[9]" :height=imageHeight alt="">
+        <figcaption>{{imageLabels[9]}}</figcaption>
+        </figure>
+
+        </div>
+    </div>
+
 
 <div class="bottom-container" id ="bottom-container">
     
@@ -38,6 +153,38 @@
 </template> 
 
 <style>
+    .grid-container {
+      display: grid;
+      padding: 10px;
+      align-self: center;
+    }
+
+    .four {
+    grid-template-columns: auto auto;
+    }
+
+    .six {
+    grid-template-columns: auto auto auto;
+    }
+
+    .eight {
+    grid-template-columns: auto auto auto auto;
+    }
+
+    .ten {
+    grid-template-columns: auto auto auto auto;
+    }
+    .grid-item {
+      background-color: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      font-size: 40px;
+      text-align: center;
+      font-weight:bold;
+    }
+    .hide {
+      display:none;
+    }
     body {
         font-family: Arial;
         color: black;
