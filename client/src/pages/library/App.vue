@@ -8,7 +8,10 @@ export default {
     },
   methods: {
     output_func() {
-            window.location.href="output.html";
+            window.location.href="output.html?name=test";
+        },
+    output_func2() {
+            window.location.href="output.html?name=test2";
         },
   }
 }
@@ -71,7 +74,7 @@ export default {
 
 
 
-    <button  @click="output_func()" type="button" class="split right-button" id="use-existing-button">
+    <button  @click="output_func2()" type="button" class="split right-button" id="use-existing-button">
     <div class="centered">
         <img src="../../assets/icons8-mind-map-50.png" alt="Avatar man">
         <h2>Choose Model 2</h2>
