@@ -99,7 +99,7 @@ export default {
         width: 50%;
         height: 100%; /*600px;*/
         font-family: Arial;
-        color: white;
+        color: DarkOliveGreen;
         /*border: none;*/
         /*border-color: red;*/
         border-radius:10px  /*round corner*/
@@ -113,12 +113,12 @@ export default {
 
     .left-button {
         left: 0%;
-        background-color: DarkKhaki; 
+        background-color: cornsilk; 
         
     }
     .right-button {
         right: 0%;
-        background-color: DarkKhaki; /*DarkOliveGreen; */
+        background-color: cornsilk; /*DarkOliveGreen; */
     }
 
     .right-button:hover {
@@ -174,7 +174,7 @@ export default {
     
     .navbar .navbar-logo {
         color: DarkOliveGreen;
-        font-size: 5.6em;
+        font-size: 3.6em;
         font-family: Impact,Cursive, sans-serif;
         /*border: 3px solid green;
         padding: 10px;*/
