@@ -24,7 +24,6 @@
 
         <p>
         Our team has a group of members with diverse experience in these technologies and are willing to learn if otherwise. 
-        Therefore we believe that we are capable of implementing the application proposed.
         </p>
         <p>
         <strong>Jessica Bojorquez</strong>, CS masters student, experience using UML diagrams, HTML, JavaScript, C++, python. 

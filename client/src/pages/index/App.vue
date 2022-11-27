@@ -100,7 +100,7 @@ export default {
     .split {
         position: absolute;
         width: 50%;
-        height: 150%; /*600px;*/
+        height: 100%; /*600px;*/
         font-family: Arial;
         color: white;
         /*border: none;*/

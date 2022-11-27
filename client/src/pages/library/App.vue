@@ -1,6 +1,11 @@
 <script>
 
 export default {
+    data() {
+        return {
+            source: "../../assets/output.json"
+        }
+    },
   methods: {
     output_func() {
             window.location.href="output.html";
@@ -55,7 +60,7 @@ export default {
 <div class="bottom-container" id ="bottom-container">
     
     
-    <button  @click="output_func()" type="button" class="split left-button" id="upload-button">
+    <button  @click="output_func()" :src=source type="button" class="split left-button" id="upload-button">
     <!--<div class="centered">-->
         <img src="../../assets/icons8-mind-map-50.png" alt="Avatar woman">
         <h2>Choose Model 1</h2>
@@ -97,9 +102,9 @@ export default {
     .split {
         position: absolute;
         width: 50%;
-        height: 150%; /*600px;*/
+        height: 100%; /*600px;*/
         font-family: Arial;
-        color: white;
+        color: DarkOliveGreen;
         /*border: none;*/
         /*border-color: red;*/
         border-radius:10px  /*round corner*/
@@ -113,12 +118,12 @@ export default {
 
     .left-button {
         left: 0%;
-        background-color: DarkKhaki; 
+        background-color: cornsilk; 
         
     }
     .right-button {
         right: 0%;
-        background-color: DarkKhaki; /*DarkOliveGreen; */
+        background-color: cornsilk; /*DarkOliveGreen; */
     }
 
     .right-button:hover {
@@ -174,7 +179,7 @@ export default {
     
     .navbar .navbar-logo {
         color: DarkOliveGreen;
-        font-size: 5.6em;
+        font-size: 3.6em;
         font-family: Impact,Cursive, sans-serif;
         /*border: 3px solid green;
         padding: 10px;*/

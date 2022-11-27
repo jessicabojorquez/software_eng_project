@@ -1,7 +1,9 @@
 <template>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<link rel="stylesheet" 
+          href=
+"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 
@@ -19,22 +21,61 @@
     </nav>
 </header>
 
-<div class="team">
-<form action="http://localhost:8000/upload/model" method="post" enctype="multipart/form-data">
-<input type="file" name="model">
-<button type="submit">Upload File</button>
-</form>
+<div class="input-area">
 
+    <!--Buttons to upload 3 files-->
+    <form enctype="multipart/form-data" method="post" name="fileinfo"  id="form">
+
+       
+            
+            <!--Button to upload .pth-->
+            <div class="custom-file-upload in-all">
+
+
+
+                <label class="custom-file-upload upload1"> 
+                    <i class="fa fa-cloud-upload"></i>  Upload PyTorch file with extension <strong>.pth</strong>:
+                    <input  type="file" name="pytorch_file" required />
+                </label>
+
+                <label class="custom-file-upload upload2">
+                    <i class="fa fa-cloud-upload" aria-hidden="true"></i>  Upload Python file with extension <strong>.py</strong>:
+                    <input type="file" name="python_file" required />
+                </label>
+
+                <label class="custom-file-upload upload3">
+                    <i class="fa fa-cloud-upload" aria-hidden="true"></i>    Upload Image <strong>jpeg</strong> or <strong>png</strong>:   
+                    <input type="file" name="input_image" required />
+                </label>
+
+                <input type="submit" value="Submit!" />
+
+                <!--
+                <input id="fileUpload" type="file" hidden>
+                Upload PyTorch File: <br>
+                <button @click="chooseFiles()">Upload <strong>.pth</strong></button>
+                <br>
+                <br>
+                <br>
+                <input id="fileUpload" type="file" hidden>
+                Upload Python File:  <br>
+                <button @click="chooseFiles()">Upload <strong>.py</strong></button>
+                <br>
+                <br>
+                <br>
+                <input id="fileUpload" type="file" hidden>
+                Upload Image:  <br>
+                <button @click="chooseFiles()">Upload <strong>.jpeg</strong>/<strong>.png</strong></button>
+                -->
+
+
+            </div>
+        </form>
 </div>
 
-<div class="bottom-container" id ="bottom-container">
-    
-    
-   
 
-
-</div>
 </body>
+
 </template> 
 
 <style>
@@ -192,12 +233,12 @@
     background-color: #333;
     }
       
-      /* Change the link color to #111 (black) on hover */
-      li a:hover {
-        background-color: #111;
-      }
-      .active {
-        background-color: #04AA6D;
+    /* Change the link color to #111 (black) on hover */
+    li a:hover {
+    background-color: #111;
+    }
+    .active {
+    background-color: #04AA6D;
     }
 
     .team{
@@ -205,4 +246,42 @@
         max-width:500px; /* or whatever width you want. */
     }
 
+    /*Upload Model styling*/
+    input[type="file"] {
+        color: DarkKhaki;
+    }
+
+   
+    .input-area {
+        color: olive;
+        height: 500px; 
+        position: relative;
+    }
+
+    .custom-file-upload {
+        display: inline-block;
+        padding: 6px 12px;
+        cursor: pointer;
+        background-color: beige;
+        height: 240px;
+        width: 600px;
+        color: olive;
+        position: absolute;
+        
+    }
+    .upload1 {
+        position: relative;
+        height: 50px;
+    }
+
+    .upload2 {
+        position: relative;
+        height: 50px;
+    }
+
+    .upload3 {
+        position: relative;
+        height: 50px;
+    }
+    
 </style>
