@@ -24,10 +24,33 @@
 <div class="input-area">
 
     <!--Buttons to upload 3 files-->
-    <form enctype="multipart/form-data" method="post" name="fileinfo">
+    <form enctype="multipart/form-data" method="post" name="fileinfo"  id="form">
+
+       
             
             <!--Button to upload .pth-->
             <div class="custom-file-upload in-all">
+
+
+
+                <label class="custom-file-upload upload1"> 
+                    <i class="fa fa-cloud-upload"></i>  Upload PyTorch file with extension <strong>.pth</strong>:
+                    <input  type="file" name="pytorch_file" required />
+                </label>
+
+                <label class="custom-file-upload upload2">
+                    <i class="fa fa-cloud-upload" aria-hidden="true"></i>  Upload Python file with extension <strong>.py</strong>:
+                    <input type="file" name="python_file" required />
+                </label>
+
+                <label class="custom-file-upload upload3">
+                    <i class="fa fa-cloud-upload" aria-hidden="true"></i>    Upload Image <strong>jpeg</strong> or <strong>png</strong>: <br>
+                    <input type="file" name="input_image" required />
+                </label>
+
+                <input type="submit" value="Submit!" />
+
+                <!--
                 <input id="fileUpload" type="file" hidden>
                 Upload PyTorch File: <br>
                 <button @click="chooseFiles()">Upload <strong>.pth</strong></button>
@@ -43,9 +66,11 @@
                 <input id="fileUpload" type="file" hidden>
                 Upload Image:  <br>
                 <button @click="chooseFiles()">Upload <strong>.jpeg</strong>/<strong>.png</strong></button>
+                -->
+
+
             </div>
         </form>
-    
 </div>
 
 
@@ -243,6 +268,20 @@
         color: olive;
         position: absolute;
         
+    }
+    .upload1 {
+        position: relative;
+        height: 50px;
+    }
+
+    .upload2 {
+        position: relative;
+        height: 50px;
+    }
+
+    .upload3 {
+        position: relative;
+        height: 50px;
     }
     
 </style>
