@@ -20,8 +20,10 @@
 </header>
 
 <div class="team">
-
-<button> UploadFile </button>
+<form action="http://localhost:8000/upload/model" method="post" enctype="multipart/form-data">
+<input type="file" name="model">
+<button type="submit">Upload File</button>
+</form>
 
 </div>
 
