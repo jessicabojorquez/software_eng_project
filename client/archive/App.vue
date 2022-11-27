@@ -45,7 +45,7 @@ h1 has the tittle, don't use h1 on anything else so that the css does not get co
         </a>-->
 
         <!--Round Button-->
-        <a href="#" class="round-button" @click="toggleSomeFlag_1">
+        <a href="#" class="round-button" @click="toggleSomeFlag">
           <div class="play-arrow-right"></div>
           <!-- To help see how this button works, uncomment this and comment next  2 lines of code
             (left like this to add functionality later)
@@ -75,7 +75,6 @@ export default {
     //MDBBtn,
     //MDBIcon
   },
-
   data () {
     return {
       //variables to set to true or false or to use for function calling
@@ -95,8 +94,7 @@ export default {
   methods: {
     //toy functions to then be replaced by real functions that do stuff for cnn visualizations
     toggleSomeFlag_1() {
-      console.log("hello")
-      uploadFile()
+            this.model_uploaded = !this.model_uploaded
     },
     toggleSomeFlag_2() {
             this.images_uploaded = !this.images_uploaded

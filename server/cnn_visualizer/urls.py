@@ -15,18 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from django.conf import settings
-from django.conf.urls.static import static
+
 from visualizer_server import views as server_views
 
 urlpatterns = [
-    path('admin', admin.site.urls),
     path('', server_views.index_template),
-    path('upload/request', server_views.upload_request),
-    path('model/run', server_views.run_model),
-    path('retrieve/images', server_views.get_images),
-    path('retrieve/model', server_views.get_model),
 ]
-
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
