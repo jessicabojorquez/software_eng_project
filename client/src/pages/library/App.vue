@@ -130,15 +130,15 @@ export default {
     }
 
     .right-button:hover {
-        background-color:olive;
+        background-color:BlanchedAlmond; /**Color of button when mouse goes on top */
         transition: 0.5s;
         box-shadow: 0 0 0 4px DarkOliveGreen;
     }
 
     .left-button:hover {
-        background-color:olive;
+        background-color:BlanchedAlmond;
         transition: 0.5s;
-        box-shadow: 0 0 0 4px DarkOliveGreen;
+        box-shadow: 0 0 0 4px  DarkOliveGreen; /*DarkKhaki;*/;
     }
 
     .right-button:focus {
