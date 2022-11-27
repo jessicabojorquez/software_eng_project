@@ -6,11 +6,17 @@ export default {
   },
   data() {
     return {
-        dataList: []
+        dataList: [],
+        subdir: String
     };
   },
   created() {
-    fetch("test/output.json")
+    const queryString=window.location.search
+    const urlParams = new URLSearchParams(queryString);
+    const myURL=urlParams.get('name')
+    this.subdir=myURL+'/'
+    var path=this.subdir+"output.json";
+    fetch(path)
             .then(response => response.json())
             .then(data => (this.dataList = data));
   },
@@ -23,7 +29,7 @@ export default {
         for (let i = 0; i<this.numLayers;i++)
         {
             //temp[i]="../../../public/test/"+this.dataList.layer_info[i].output_path.substring(2);
-            temp[i]="test/"+this.dataList.layer_info[i].output_path.substring(2);
+            temp[i]=this.subdir+this.dataList.layer_info[i].output_path.substring(2);
         }
         return temp
     },
