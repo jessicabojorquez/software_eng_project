@@ -44,7 +44,7 @@
                 </label>
 
                 <label class="custom-file-upload upload3">
-                    <i class="fa fa-cloud-upload" aria-hidden="true"></i>    Upload Image <strong>jpeg</strong> or <strong>png</strong>: <br>
+                    <i class="fa fa-cloud-upload" aria-hidden="true"></i>    Upload Image <strong>jpeg</strong> or <strong>png</strong>:   
                     <input type="file" name="input_image" required />
                 </label>
 
