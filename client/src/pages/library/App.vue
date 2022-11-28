@@ -78,8 +78,9 @@ export default {
             <button @click="output_func()" :src=source type="button" class="grid-item " id="upload-button">
                 <!--<div class="centered">-->
                 <img src="../../assets/icons8-mind-map-50.png" alt="Avatar woman" width="100">
-                <h2>Choose Model 1</h2>
-                <p>This model blah blah.</p>
+                <h2>3-block CNN on MNIST dataset </h2>
+                <p>This model is contains 2 Conv layer, 2 pooling layer and 2 fully connected layer.
+                  The input for this model is a grayscale image of digit 2. </p>
 
                 <!--</div>-->
             </button>
