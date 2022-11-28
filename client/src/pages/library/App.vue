@@ -79,8 +79,8 @@ export default {
                 <!--<div class="centered">-->
                 <img src="../../assets/icons8-mind-map-50.png" alt="Avatar woman" width="100">
                 <h2>3-layer CNN on MNIST dataset </h2>
-                <p>This model is contains 2 Conv layer, 2 pooling layer and 2 fully connected layer.
-                  The input for this model is a grayscale image of digit 7. </p>
+                <p>This model contains 2 Conv layers, 2 pooling layers and 2 fully connected layers.</p>
+                  <p>The input for this model is a grayscale image of digit 7. </p>
 
                 <!--</div>-->
             </button>
@@ -89,8 +89,8 @@ export default {
                 <div class="centered">
                     <img src="../../assets/icons8-mind-map-50.png" alt="Avatar man" width="100">
                     <h2> 3-layer CNN on MNIST dataset</h2>
-                    <p> This model is contains 2 Conv layer, 2 pooling layer and 2 fully connected layer.
-                  The input for this model is a grayscale image of digit 9.</p>
+                    <p> This model contains 2 Conv layers, 2 pooling layers and 2 fully connected layers.</p>
+                  <p>The input for this model is a grayscale image of digit 9.</p>
                 </div>
             </button>
 
@@ -98,8 +98,8 @@ export default {
                 <div class="centered">
                     <img src="../../assets/icons8-mind-map-50.png" alt="Avatar man" width="100">
                     <h2>2-layer CNN on CFAIR-10 dataset</h2>
-                    <p>This model is contains 1 Conv layer, 1 pooling layer and 2 fully connected layer.
-                  The input is a rgb image of CAR.</p>
+                    <p>This model contains 1 Conv layer, 1 pooling layer and 2 fully connected layers.</p>
+                  <p>The input is a rgb image of a car.</p>
                 </div>
             </button>
 
@@ -107,8 +107,8 @@ export default {
                 <div class="centered">
                     <img src="../../assets/icons8-mind-map-50.png" alt="Avatar man" width="100">
                     <h2>4-layer CNN on CFAIR-10 dataset</h2>
-                    <p>This model is contains 3 Conv layer, 3 pooling layer and 2 fully connected layer.
-                  The input is a rgb image of CAR.</p>
+                    <p>This model contains 3 Conv layers, 3 pooling layers and 2 fully connected layers.</p>
+                  <p>The input is a rgb image of a bird.</p>
                 </div>
             </button>
 
