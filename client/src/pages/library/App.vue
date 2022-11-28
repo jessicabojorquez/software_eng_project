@@ -78,9 +78,9 @@ export default {
             <button @click="output_func()" :src=source type="button" class="grid-item " id="upload-button">
                 <!--<div class="centered">-->
                 <img src="../../assets/icons8-mind-map-50.png" alt="Avatar woman" width="100">
-                <h2>3-block CNN on MNIST dataset </h2>
+                <h2>3-layer CNN on MNIST dataset </h2>
                 <p>This model is contains 2 Conv layer, 2 pooling layer and 2 fully connected layer.
-                  The input for this model is a grayscale image of digit 2. </p>
+                  The input for this model is a grayscale image of digit 7. </p>
 
                 <!--</div>-->
             </button>
@@ -88,24 +88,27 @@ export default {
             <button @click="output_func2()" type="button" class="grid-item" id="use-existing-button">
                 <div class="centered">
                     <img src="../../assets/icons8-mind-map-50.png" alt="Avatar man" width="100">
-                    <h2>Choose Model 2</h2>
-                    <p>This model blah blah.</p>
+                    <h2> 3-layer CNN on MNIST dataset</h2>
+                    <p> This model is contains 2 Conv layer, 2 pooling layer and 2 fully connected layer.
+                  The input for this model is a grayscale image of digit 9.</p>
                 </div>
             </button>
 
             <button @click="output_func3()" type="button" class="grid-item" id="use-existing-button" height="100">
                 <div class="centered">
                     <img src="../../assets/icons8-mind-map-50.png" alt="Avatar man" width="100">
-                    <h2>Choose Model 3</h2>
-                    <p>This model blah blah.</p>
+                    <h2>2-layer CNN on CFAIR-10 dataset</h2>
+                    <p>This model is contains 1 Conv layer, 1 pooling layer and 2 fully connected layer.
+                  The input is a rgb image of CAR.</p>
                 </div>
             </button>
 
             <button @click="output_func4()" type="button" class="grid-item" id="use-existing-button">
                 <div class="centered">
                     <img src="../../assets/icons8-mind-map-50.png" alt="Avatar man" width="100">
-                    <h2>Choose Model 4</h2>
-                    <p>This model blah blah.</p>
+                    <h2>4-layer CNN on CFAIR-10 dataset</h2>
+                    <p>This model is contains 3 Conv layer, 3 pooling layer and 2 fully connected layer.
+                  The input is a rgb image of CAR.</p>
                 </div>
             </button>
 
