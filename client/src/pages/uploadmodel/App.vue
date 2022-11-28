@@ -5,7 +5,8 @@ import uploadRequest from "../../API/API.js"
 export default {
     data() {
         return {
-            form_data: new FormData()
+            form_data: new FormData(),
+            isActive: true
         }
     },
 
@@ -33,13 +34,17 @@ export default {
 
         },
         upload2() {
-            var delayInMilliseconds = 1000; //1 second
+            var delayInMilliseconds = 2000; //1 second
 
             setTimeout(function () {
                 window.location.href = "output.html?name=test";
             }, delayInMilliseconds);
+            this.toggle();
 
-        }
+        },
+        toggle() {
+            this.isActive=!this.isActive;
+        },
     }
 }
 </script>
@@ -73,7 +78,7 @@ export default {
             </nav>
         </header>
 
-        <div class="input-area">
+        <div class="input-area" :class="{ hide: !isActive }">
 
             <!--Buttons to upload 3 files-->
             <form enctype="multipart/form-data" method="post" name="fileinfo" id="form">
@@ -83,7 +88,7 @@ export default {
                 <!--Button to upload .pth-->
                 <div class="custom-file-upload in-all">
 
-                    <label class="custom-file-upload upload1">
+                    <label class="custom-file-upload upload1" >
                         <i class="fa fa-cloud-upload"></i> Upload PyTorch file with extension <strong>.pth</strong>:
                         <input type="file" accept=".pth" @change="add_file($event)" id="file-input">
                     </label>
@@ -108,13 +113,23 @@ export default {
                 </div>
             </form>
         </div>
-
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="font-weight-bold process" :class="{hide: isActive }">                         Processing... </div>
 
     </body>
 
 </template> 
 
 <style>
+.process {
+    font-size: 50px;
+    color:darkolivegreen;
+}
+
 body {
     font-family: Arial;
     color: black;
@@ -149,6 +164,9 @@ body {
         min-width: 120px;*/
 
 
+}
+.hide {
+    display: none;
 }
 
 .left-button {
