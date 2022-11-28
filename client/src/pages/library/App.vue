@@ -13,6 +13,12 @@ export default {
     output_func2() {
             window.location.href="output.html?name=test2";
         },
+    output_func3() {
+        window.location.href="output.html?name=test3";
+    },
+    output_func4() {
+        window.location.href="output.html?name=test4";
+    },
   }
 }
 </script>
@@ -60,24 +66,38 @@ export default {
     </nav>
 </header>
 
-<div class="bottom-container" id ="bottom-container">
+<div class="grid-container" id ="bottom-container">
     
     
-    <button  @click="output_func()" :src=source type="button" class="split left-button" id="upload-button">
+    <button  @click="output_func()" :src=source type="button" class="grid-item " id="upload-button">
     <!--<div class="centered">-->
-        <img src="../../assets/icons8-mind-map-50.png" alt="Avatar woman">
+        <img src="../../assets/icons8-mind-map-50.png" alt="Avatar woman" width="100">
         <h2>Choose Model 1</h2>
         <p>This model blah blah.</p>
        
     <!--</div>-->
     </button>
 
-
-
-    <button  @click="output_func2()" type="button" class="split right-button" id="use-existing-button">
+    <button  @click="output_func2()" type="button" class="grid-item" id="use-existing-button">
     <div class="centered">
-        <img src="../../assets/icons8-mind-map-50.png" alt="Avatar man">
+        <img src="../../assets/icons8-mind-map-50.png" alt="Avatar man" width="100">
         <h2>Choose Model 2</h2>
+        <p>This model blah blah.</p>
+    </div>
+    </button>
+
+    <button  @click="output_func3()" type="button" class="grid-item" id="use-existing-button" height="100">
+    <div class="centered">
+        <img src="../../assets/icons8-mind-map-50.png" alt="Avatar man" width="100">
+        <h2>Choose Model 3</h2>
+        <p>This model blah blah.</p>
+    </div>
+    </button>
+
+    <button  @click="output_func4()" type="button" class="grid-item" id="use-existing-button">
+    <div class="centered">
+        <img src="../../assets/icons8-mind-map-50.png" alt="Avatar man" width="100">
+        <h2>Choose Model 4</h2>
         <p>This model blah blah.</p>
     </div>
     </button>
@@ -87,6 +107,32 @@ export default {
 </template> 
 
 <style>
+
+    .grid-container {
+      display: grid;
+      padding: 10px;
+      align-self: center;
+      grid-template-columns: auto auto
+    }
+
+    .grid-item {
+    background-color: cornsilk;
+      border: 1px solid rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      font-size: 20px;
+      text-align: center;
+      font-weight:bold;
+      font-family: Arial;
+        color: DarkOliveGreen;
+        border-radius:10px
+    }
+
+    .grid-item:hover {
+        background-color:BlanchedAlmond; /**Color of button when mouse goes on top */
+        transition: 0.5s;
+        box-shadow: 0 0 0 4px DarkOliveGreen;
+    }
+
     body {
         font-family: Arial;
         color: black;
@@ -105,7 +151,7 @@ export default {
     .split {
         position: absolute;
         width: 50%;
-        height: 100%; /*600px;*/
+        height: 50%; /*600px;*/
         font-family: Arial;
         color: DarkOliveGreen;
         /*border: none;*/
@@ -118,7 +164,6 @@ export default {
         
 
     }
-
     .left-button {
         left: 0%;
         background-color: cornsilk; 
