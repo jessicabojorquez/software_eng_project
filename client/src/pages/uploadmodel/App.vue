@@ -2,21 +2,19 @@
 <script>
 import uploadRequest from "../../API/API.js" 
 // import axios from 'axios'
-
-
-
 export default {
   data () {
     return {
-        form_data: new FormData()
+        form_data: new FormData(),
+        test: []
     }
   },
-
 
     methods: {
         upload() {
             console.log(this.form_data);
             uploadRequest(this.form_data);
+            console.log("local");
         },
         add_file(event){
             console.log(event.target.files);
@@ -33,13 +31,11 @@ export default {
             console.log(this.form_data.getAll('image'));
             console.log(this.form_data.getAll('pth'));
             console.log(this.form_data.getAll('model'));
-
+            this.test=this.form_data.getAll('image');
             
         }
     }
 }
-
-
 </script>
 
 
@@ -98,7 +94,7 @@ export default {
 
 
                 
-    <input type="submit" @change="upload($event)" value="Submit!" /> <!--function that sends the http requrest and function on each buttons to send to the form data-->
+    <input type="button" @click="upload()" value="Submit!" /> <!--function that sends the http requrest and function on each buttons to send to the form data-->
     </div>
     </form>
 </div>
