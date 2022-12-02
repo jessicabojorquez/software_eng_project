@@ -11,9 +11,11 @@ export default {
     },
 
     methods: {
-        upload() {
-            console.log(this.form_data);
-            uploadRequest(this.form_data);
+        async upload() {
+            this.toggle()
+            let modelId = await uploadRequest(this.form_data)
+            console.log(modelId)
+            //window.location.href = "output.html?name=test"
         },
         add_file(event) {
             console.log(event.target.files);
@@ -90,25 +92,25 @@ export default {
 
                     <label class="custom-file-upload upload1" >
                         <i class="fa fa-cloud-upload"></i> Upload PyTorch file with extension <strong>.pth</strong>:
-                        <input type="file" accept=".pth" @change="add_file($event)" id="file-input">
+                        <input type="file" name="pth" accept=".pth" @change="add_file($event)" id="file-input">
                     </label>
 
 
                     <label class="custom-file-upload upload1">
                         <i class="fa fa-cloud-upload"></i> Upload Python file with extension <strong>.py</strong>:
-                        <input type="file" accept=".py" @change="add_file($event)" id="file-input">
+                        <input type="file" name="model" accept=".py" @change="add_file($event)" id="file-input">
                     </label>
 
 
                     <label class="custom-file-upload upload1">
                         <i class="fa fa-cloud-upload"></i> Upload Image <strong>jpeg</strong> or <strong>png</strong>:
-                        <input type="file" accept="image/*" @change="add_file($event)" id="file-input">
+                        <input type="file" name="image" accept="image/*" @change="add_file($event)" id="file-input">
                     </label>
 
 
 
 
-                    <input type="button" @click="upload2()" value="Submit!" />
+                    <input type="button" @click="upload()" value="Submit!" />
                     <!--function that sends the http requrest and function on each buttons to send to the form data-->
                 </div>
             </form>
