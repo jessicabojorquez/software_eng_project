@@ -15,7 +15,7 @@ export default {
             this.toggle()
             let modelId = await uploadRequest(this.form_data)
             console.log(modelId)
-            //window.location.href = "output.html?name=test"
+            window.location.href = "output.html?name="+modelId
         },
         add_file(event) {
             console.log(event.target.files);

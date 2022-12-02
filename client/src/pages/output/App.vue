@@ -119,7 +119,7 @@ export default {
                     <figcaption>{{ imageParams[0] }}</figcaption>
                 </figure>
 
-                <!--<img src="../../assets/arrow.png" alt="" class="arrow" :class="{ hide: !isActive[1] }">-->
+                <img src="../../assets/arrow.png" alt="" class="arrow" :class="{ hide: !isActive[1] }">
 
                 <figure class="grid-item" :class="{ hide: !isActive[1] }">
                     <figcaption>{{ imageLabels[1] }}</figcaption>
@@ -128,7 +128,7 @@ export default {
                     <figcaption>{{ imageSizes[1] }}</figcaption>
                     <figcaption>{{ imageParams[1] }}</figcaption>
                 </figure>
-                <!--<img src="../../assets/arrow.png" alt="" class="arrow" :class="{ hide: !isActive[1] }">-->
+                <img src="../../assets/arrow.png" alt="" class="arrow" :class="{ hide: !isActive[1] }">
 
 
                 <figure class="grid-item" :class="{ hide: !isActive[2] }">
@@ -138,7 +138,7 @@ export default {
                     <figcaption>{{ imageSizes[2] }}</figcaption>
                     <figcaption>{{ imageParams[2] }}</figcaption>
                 </figure>
-                <!--<img src="../../assets/arrow.png" alt="" class="arrow" :class="{ hide: !isActive[1] }">-->
+                <img src="../../assets/arrow.png" alt="" class="arrow" :class="{ hide: !isActive[1] }">
 
 
                 <figure class="grid-item" :class="{ hide: !isActive[3] }">
@@ -148,7 +148,7 @@ export default {
                     <figcaption>{{ imageSizes[3] }}</figcaption>
                     <figcaption>{{ imageParams[3] }}</figcaption>
                 </figure>
-                <!--<img src="../../assets/arrow.png" alt="" class="arrow" :class="{ hide: !isActive[1] }">-->
+                <img src="../../assets/arrow.png" alt="" class="arrow" :class="{ hide: !isActive[1] }">
 
 
                 <figure class="grid-item" :class="{ hide: !isActive[4] }">
@@ -158,7 +158,7 @@ export default {
                     <figcaption>{{ imageSizes[4] }}</figcaption>
                     <figcaption>{{ imageParams[4] }}</figcaption>
                 </figure>
-                <!--<img src="../../assets/arrow.png" alt="" class="arrow" :class="{ hide: !isActive[1] }">-->
+                <img src="../../assets/arrow.png" alt="" class="arrow" :class="{ hide: !isActive[1] }">
 
 
                 <figure class="grid-item" :class="{ hide: !isActive[5] }">
@@ -168,7 +168,7 @@ export default {
                     <figcaption>{{ imageSizes[5] }}</figcaption>
                     <figcaption>{{ imageParams[5] }}</figcaption>
                 </figure>
-                <!--<img src="../../assets/arrow.png" alt="" class="arrow" :class="{ hide: !isActive[1] }">-->
+                <img src="../../assets/arrow.png" alt="" class="arrow" :class="{ hide: !isActive[1] }">
 
 
                 <figure class="grid-item" :class="{ hide: !isActive[6] }">
@@ -178,7 +178,7 @@ export default {
                     <figcaption>{{ imageSizes[6] }}</figcaption>
                     <figcaption>{{ imageParams[6] }}</figcaption>>
                 </figure>
-                <!--<img src="../../assets/arrow.png" alt="" class="arrow" :class="{ hide: !isActive[1] }">-->
+                <img src="../../assets/arrow.png" alt="" class="arrow" :class="{ hide: !isActive[1] }">
 
                 <figure class="grid-item" :class="{ hide: !isActive[7] }">
                     <figcaption>{{ imageLabels[7] }}</figcaption>
@@ -187,7 +187,7 @@ export default {
                     <figcaption>{{ imageSizes[7] }}</figcaption>
                     <figcaption>{{ imageParams[7] }}</figcaption>
                 </figure>
-                <!--<img src="../../assets/arrow.png" alt="" class="arrow" :class="{ hide: !isActive[1] }">-->
+                <img src="../../assets/arrow.png" alt="" class="arrow" :class="{ hide: !isActive[1] }">
 
                 <figure class="grid-item" :class="{ hide: !isActive[8] }">
                     <figcaption>{{ imageLabels[8] }}</figcaption>
@@ -196,7 +196,7 @@ export default {
                     <figcaption>{{ imageSizes[8] }}</figcaption>
                     <figcaption>{{ imageParams[8] }}</figcaption>
                 </figure>
-                <!--<img src="../../assets/arrow.png" alt="" class="arrow" :class="{ hide: !isActive[1] }">-->
+                <img src="../../assets/arrow.png" alt="" class="arrow" :class="{ hide: !isActive[1] }">
 
                 <figure class="grid-item" :class="{ hide: !isActive[9] }">
                     <figcaption>{{ imageLabels[9] }}</figcaption>
