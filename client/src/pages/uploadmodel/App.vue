@@ -5,14 +5,17 @@ import uploadRequest from "../../API/API.js"
 export default {
     data() {
         return {
-            form_data: new FormData()
+            form_data: new FormData(),
+            isActive: true
         }
     },
 
     methods: {
-        upload() {
-            console.log(this.form_data);
-            uploadRequest(this.form_data);
+        async upload() {
+            this.toggle()
+            let modelId = await uploadRequest(this.form_data)
+            console.log(modelId)
+            window.location.href = "output.html?name="+modelId
         },
         add_file(event) {
             console.log(event.target.files);
@@ -33,13 +36,17 @@ export default {
 
         },
         upload2() {
-            var delayInMilliseconds = 1000; //1 second
+            var delayInMilliseconds = 2000; //1 second
 
             setTimeout(function () {
                 window.location.href = "output.html?name=test";
             }, delayInMilliseconds);
+            this.toggle();
 
-        }
+        },
+        toggle() {
+            this.isActive=!this.isActive;
+        },
     }
 }
 </script>
@@ -73,7 +80,7 @@ export default {
             </nav>
         </header>
 
-        <div class="input-area">
+        <div class="input-area" :class="{ hide: !isActive }">
 
             <!--Buttons to upload 3 files-->
             <form enctype="multipart/form-data" method="post" name="fileinfo" id="form">
@@ -83,38 +90,48 @@ export default {
                 <!--Button to upload .pth-->
                 <div class="custom-file-upload in-all">
 
-                    <label class="custom-file-upload upload1">
+                    <label class="custom-file-upload upload1" >
                         <i class="fa fa-cloud-upload"></i> Upload PyTorch file with extension <strong>.pth</strong>:
-                        <input type="file" accept=".pth" @change="add_file($event)" id="file-input">
+                        <input type="file" name="pth" accept=".pth" @change="add_file($event)" id="file-input">
                     </label>
 
 
                     <label class="custom-file-upload upload1">
                         <i class="fa fa-cloud-upload"></i> Upload Python file with extension <strong>.py</strong>:
-                        <input type="file" accept=".py" @change="add_file($event)" id="file-input">
+                        <input type="file" name="model" accept=".py" @change="add_file($event)" id="file-input">
                     </label>
 
 
                     <label class="custom-file-upload upload1">
                         <i class="fa fa-cloud-upload"></i> Upload Image <strong>jpeg</strong> or <strong>png</strong>:
-                        <input type="file" accept="image/*" @change="add_file($event)" id="file-input">
+                        <input type="file" name="image" accept="image/*" @change="add_file($event)" id="file-input">
                     </label>
 
 
 
 
-                    <input type="button" @click="upload2()" value="Submit!" />
+                    <input type="button" @click="upload()" value="Submit!" />
                     <!--function that sends the http requrest and function on each buttons to send to the form data-->
                 </div>
             </form>
         </div>
-
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="font-weight-bold process" :class="{hide: isActive }">                         Processing... </div>
 
     </body>
 
 </template> 
 
 <style>
+.process {
+    font-size: 50px;
+    color:darkolivegreen;
+}
+
 body {
     font-family: Arial;
     color: black;
@@ -149,6 +166,9 @@ body {
         min-width: 120px;*/
 
 
+}
+.hide {
+    display: none;
 }
 
 .left-button {
