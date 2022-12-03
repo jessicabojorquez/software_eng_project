@@ -1,9 +1,17 @@
 <script>
-
+/**
+ * Output Page
+ * @vue-data {String[]} dataList - The parsed JSON containing information about the model to display
+ * @vue-data {String} subdir - The String parsed from the URLSearchParam "name"
+ * @vue-computed {Number} numLayers - The number of layers to be displayed
+ * @vue-computed {String[]} imagePaths - The paths to each heatmap to be displayed
+ * @vue-computed {String[]} imageLabels - The labels for each heatmap to be displayed
+ * @vue-computed {String[]} imageSizes - The sizes for each heatmap to be displayed
+ * @vue-computed {String[]} imageParams - The parameter numbers for each heatmap to be displayed
+ * @vue-computed {Boolean} isActive - Indicates whether a particular image pane should be displayed
+ * @vue-computed {Number} imageHeight - The size of image to display based off screen size
+ */
 export default {
-    props: {
-        src: String
-    },
     data() {
         return {
             dataList: [],
@@ -74,8 +82,6 @@ export default {
             let height = screen.height
             return height / this.numLayers
         }
-    },
-    methods: {
     }
 };
 </script>

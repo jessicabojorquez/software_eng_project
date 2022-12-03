@@ -1,5 +1,9 @@
 <script>
-
+/**
+ * Library Page
+ * @vue-data {String} source - static link to assets folder
+ * @vue-event {String} output_func - changes page to output, and sets the URL parameter name to equal param
+ */
 export default {
     data() {
         return {
@@ -22,28 +26,6 @@ export default {
     </head>
 
     <body>
-
-        <!-- ADDED <a> TAG TO TRY TO DO THE GOVER THING ON THE BUTTON WITH DIFF color
-    MIGHT NEED OT WATCH TUTORIAL TO SEE HOW TO CHANGE THAT   
-    i DO HAVE A BUTTON ABOVE FOR TESTING
-    THE COLOR GREEN ONT HE BUTOTN IS GIVING ISSUES
-
-    ********
-    TRY TO REMOVE THE COLOR GREEN AND SEE IF ITS HOVERS 
--->
-
-        <!--
-<div class="top" id="top">
-    <div class="centered">
-        <h2>Page Tittle</h2>
-        <p>Some text.</p>
-    </div>
-    <button class="hi">hi
-
-        <img src="img_avatar.png" alt="Avatar man">
-    </button>
-</div>-->
-        <!-- Navbar-->
         <header class="header">
             <nav class="navbar">
                 <div class="top-container"><a href="index.html"
@@ -67,13 +49,11 @@ export default {
 
 
             <button @click="output_func('seven')" :src=source type="button" class="grid-item " id="upload-button">
-                <!--<div class="centered">-->
                 <img src="../../assets/seven.jpg" alt="Avatar woman" width="100">
                 <h2>3-layer CNN on MNIST dataset </h2>
                 <p>This model contains 2 Conv layers, 2 pooling layers and 2 fully connected layers.</p>
                   <p>The input for this model is a grayscale image of digit 7. Our model predicts it correctly. </p>
 
-                <!--</div>-->
             </button>
 
             <button @click="output_func('nine')" type="button" class="grid-item" id="use-existing-button">
