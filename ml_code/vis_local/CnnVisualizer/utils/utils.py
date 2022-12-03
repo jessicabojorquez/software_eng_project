@@ -33,9 +33,17 @@ def load_input(input_path):
     try:
         # read image
         #img = cv2.imread(input_path)
-        dataset = OneImageDataset(input_path,transform=transforms.Compose([transforms.ToTensor()]))
+
+        img = cv2.imread(input_path, cv2.IMREAD_UNCHANGED)
+        dims = img.shape
+        if len(dims) ==3  and dims[-1] ==3:
+            img_transforms = transforms.Compose([transforms.ToTensor(),transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
+        else:
+            img_transforms = transforms.Compose([transforms.ToTensor()])
+        dataset = OneImageDataset(input_path,transform=img_transforms)
         image = dataset[0]
         #print('1')
+
         return image.unsqueeze(0)
 
     except:
