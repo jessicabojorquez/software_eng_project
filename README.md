@@ -8,9 +8,10 @@ The goal of this project is to develop a tool that can automatically generate vi
 ## Introduction
 Our website will allow users to upload their trained models and view both interactable graphs representing model structure and learned filters or layers inside the "black box". Users would also be able to adjust or selectively include or exclude different filters. This would help improve speed and effectiveness on final model for the user, since users can decide if they should disregard parameters that are less influential in the classification of images.
 ## Code Overview
-* ./client: our front-end code which holds all the information pertaining to the webpages, as well as the API used to call the backend
-* ./
+* ./client: our front-end code which holds all the information pertaining to the webpages, as well as the API used to call the backend. The JS functionality for the fron end pages can be found in the client/src/pages folder. Each front end page is in its respective folder with functionality in the script section of each file. 
+* ./ 
 * ./ml_code: Our main model to generate heatmaps for CNN.
+* ./
   
 (please fill the missing part)
 
@@ -58,7 +59,7 @@ Once both are running, navigate to http://localhost:8080/static/src/vue/dist/ in
 Note: 8080 is the default port to deploy to, but if that is busy, a different port will be used. The client terminal session will indicate the correct client URL in any case.
 
 ## Contact
-* Jessica Bojorquez (email)
+* Jessica Bojorquez (jessicarbojorquez@gmail.com)
 * Rishi Upadhyay (rishiu@ucla.edu)
 * Sicheng Mo (smo3@ucla.edu)
 * Liyang Huang ()
