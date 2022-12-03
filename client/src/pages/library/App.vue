@@ -7,18 +7,9 @@ export default {
         }
     },
     methods: {
-        output_func() {
-            window.location.href = "output.html?name=test";
-        },
-        output_func2() {
-            window.location.href = "output.html?name=test2";
-        },
-        output_func3() {
-            window.location.href = "output.html?name=test3";
-        },
-        output_func4() {
-            window.location.href = "output.html?name=test4";
-        },
+        output_func(param) {
+            window.location.href = "output.html?name="+param;
+        }
     }
 }
 </script>
@@ -75,7 +66,7 @@ export default {
         <div class="grid-container" id="bottom-container">
 
 
-            <button @click="output_func()" :src=source type="button" class="grid-item " id="upload-button">
+            <button @click="output_func('seven')" :src=source type="button" class="grid-item " id="upload-button">
                 <!--<div class="centered">-->
                 <img src="../../assets/icons8-mind-map-50.png" alt="Avatar woman" width="100">
                 <h2>3-layer CNN on MNIST dataset </h2>
@@ -85,7 +76,7 @@ export default {
                 <!--</div>-->
             </button>
 
-            <button @click="output_func2()" type="button" class="grid-item" id="use-existing-button">
+            <button @click="output_func('nine')" type="button" class="grid-item" id="use-existing-button">
                 <div class="centered">
                     <img src="../../assets/icons8-mind-map-50.png" alt="Avatar man" width="100">
                     <h2> 3-layer CNN on MNIST dataset</h2>
@@ -94,7 +85,7 @@ export default {
                 </div>
             </button>
 
-            <button @click="output_func3()" type="button" class="grid-item" id="use-existing-button" height="100">
+            <button @click="output_func('car')" type="button" class="grid-item" id="use-existing-button" height="100">
                 <div class="centered">
                     <img src="../../assets/icons8-mind-map-50.png" alt="Avatar man" width="100">
                     <h2>2-layer CNN on CFAIR-10 dataset</h2>
@@ -103,7 +94,7 @@ export default {
                 </div>
             </button>
 
-            <button @click="output_func4()" type="button" class="grid-item" id="use-existing-button">
+            <button @click="output_func('bird')" type="button" class="grid-item" id="use-existing-button">
                 <div class="centered">
                     <img src="../../assets/icons8-mind-map-50.png" alt="Avatar man" width="100">
                     <h2>4-layer CNN on CFAIR-10 dataset</h2>
