@@ -26,7 +26,7 @@ class Visualizer():
         # self.model = torch.load(model_ckpt, map_location=torch.device('cuda' if torch.cuda.is_available() else 'cpu'))
         try:
             self.model = torch.load(model_ckpt, map_location=torch.device('cuda' if torch.cuda.is_available() else 'cpu'))
-            print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+            # print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
         except Exception as e:
             if str(e) == "Ran out of input" or str(e).find("unpickling") >= 0: # Invalid input file
                 print("Invalid .pth file")
