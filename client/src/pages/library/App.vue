@@ -7,18 +7,9 @@ export default {
         }
     },
     methods: {
-        output_func() {
-            window.location.href = "output.html?name=test";
-        },
-        output_func2() {
-            window.location.href = "output.html?name=test2";
-        },
-        output_func3() {
-            window.location.href = "output.html?name=test3";
-        },
-        output_func4() {
-            window.location.href = "output.html?name=test4";
-        },
+        output_func(param) {
+            window.location.href = "output.html?name="+param;
+        }
     }
 }
 </script>
@@ -75,40 +66,40 @@ export default {
         <div class="grid-container" id="bottom-container">
 
 
-            <button @click="output_func()" :src=source type="button" class="grid-item " id="upload-button">
+            <button @click="output_func('seven')" :src=source type="button" class="grid-item " id="upload-button">
                 <!--<div class="centered">-->
-                <img src="../../assets/icons8-mind-map-50.png" alt="Avatar woman" width="100">
+                <img src="../../assets/seven.jpg" alt="Avatar woman" width="100">
                 <h2>3-layer CNN on MNIST dataset </h2>
                 <p>This model contains 2 Conv layers, 2 pooling layers and 2 fully connected layers.</p>
-                  <p>The input for this model is a grayscale image of digit 7. </p>
+                  <p>The input for this model is a grayscale image of digit 7. Our model predicts it correctly. </p>
 
                 <!--</div>-->
             </button>
 
-            <button @click="output_func2()" type="button" class="grid-item" id="use-existing-button">
+            <button @click="output_func('nine')" type="button" class="grid-item" id="use-existing-button">
                 <div class="centered">
-                    <img src="../../assets/icons8-mind-map-50.png" alt="Avatar man" width="100">
+                    <img src="../../assets/nine.jpg" alt="Avatar man" width="100">
                     <h2> 3-layer CNN on MNIST dataset</h2>
                     <p> This model contains 2 Conv layers, 2 pooling layers and 2 fully connected layers.</p>
-                  <p>The input for this model is a grayscale image of digit 9.</p>
+                  <p>The input for this model is a grayscale image of digit 9. Our model predicts it incorrectly.</p>
                 </div>
             </button>
 
-            <button @click="output_func3()" type="button" class="grid-item" id="use-existing-button" height="100">
+            <button @click="output_func('plane')" type="button" class="grid-item" id="use-existing-button" height="100">
                 <div class="centered">
-                    <img src="../../assets/icons8-mind-map-50.png" alt="Avatar man" width="100">
-                    <h2>2-layer CNN on CFAIR-10 dataset</h2>
-                    <p>This model contains 1 Conv layer, 1 pooling layer and 2 fully connected layers.</p>
-                  <p>The input is a rgb image of a car.</p>
-                </div>
-            </button>
-
-            <button @click="output_func4()" type="button" class="grid-item" id="use-existing-button">
-                <div class="centered">
-                    <img src="../../assets/icons8-mind-map-50.png" alt="Avatar man" width="100">
+                    <img src="../../assets/plane.jpg" alt="Avatar man" width="100">
                     <h2>4-layer CNN on CFAIR-10 dataset</h2>
-                    <p>This model contains 3 Conv layers, 3 pooling layers and 2 fully connected layers.</p>
-                  <p>The input is a rgb image of a bird.</p>
+                    <p>This model contains 2 Conv layers, 2 pooling layers and 3 fully connected layers.</p>
+                  <p>The input is a rgb image of a plane. Our model predicts it correctly.</p>
+                </div>
+            </button>
+
+            <button @click="output_func('deer')" type="button" class="grid-item" id="use-existing-button">
+                <div class="centered">
+                    <img src="../../assets/deer.jpg" alt="Avatar man" width="100">
+                    <h2>2-layer CNN on CFAIR-10 dataset</h2>
+                    <p>This model contains 2 Conv layer, 2 pooling layer and 3 fully connected layers.</p>
+                  <p>The input is a rgb image of a deer. Our model predicts it incorrectly.</p>
                 </div>
             </button>
 

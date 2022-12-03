@@ -27,9 +27,26 @@
         <div class="team">
 
             <p>
-                When you upload your own model and image or select one of our pretrained ones, we first tell our server what models/images to use. This is then passed to our visualizer code, which uses an algorithm called Grad-CAM. This algorithm takes as input a neural network, an image, and a class we are interested in (generally the class of the image we passed in). It then take the class of interest, and backpropogates only the gradients that relate to this class. In this way, we can see which parts of the image are most influential on picking this class and can see whether these are the areas we want the network to focus on or not. 
 
-                For our particular application, we ask the algorithm to focus specifically on a few convolutional layers rather than the entire network (which would include pooling layers and fully connected layers as well). This allows us to get useful results without presenting the user with an overload of information, much of which might not be very useful. 
+                When you upload your own model and image or select one of our pretrained ones, we first tell our server
+                what models/images to use. This is then passed to our visualizer code, which uses an algorithm called
+                Grad-CAM. This algorithm takes as input a neural network, an image, and a class we are interested in
+                (generally the class of the image we passed in). It then takes the class of interest, and backpropogates
+                only the gradients that relate to this class. In this way, we can see which parts of the image are most
+                influential on picking this class and can see whether these are the areas we want the network to focus
+                on or not.
+                <br>
+                <br>
+                For our particular application, we ask the algorithm to focus specifically on a few convolutional layers
+                rather than the entire network (which would include pooling layers and fully connected layers as well).
+                This allows us to get useful results without presenting the user with an overload of information, much
+                of which might not be very useful.
+
+                <br>
+                <br>
+                After running the algorithm, we package the results in a json file which is passed back from our backend
+                the frontend and then visualized with Vue.js.
+            </p>
 
                 After running the algorithm, we package the results in a json file which is passed back from our backend the frontend and then visualized with Vue.js.
         </div>

@@ -1,3 +1,5 @@
+import json
+
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.core.files.storage import FileSystemStorage
@@ -5,7 +7,7 @@ import random, os
 from CnnVisualizer.core.vis import Visualizer
 from cnn_visualizer.settings import BASE_DIR
 from django.views.decorators.csrf import csrf_exempt
-
+import cv2
 
 def index_template(request):
     return render(request, 'visualizer_server/index.html')
@@ -13,6 +15,7 @@ def index_template(request):
 @csrf_exempt
 def upload_request(request):
     model_id = "nomodel"
+    fs = ''
     if request.method == 'POST':
         uploaded_model = request.FILES['model']
         uploaded_ptn = request.FILES['pth']
@@ -38,13 +41,31 @@ def run_model(model_id):
             net_ckpt = os.path.join(directory, file)
         else:
             input_path = os.path.join(directory, file)
-    print(net_ckpt)
-    print(net_source)
-    print(input_path)
+
+    # print(net_ckpt)
+    # print(net_source)
+    # print(input_path)
     os.mkdir(os.path.join(directory, 'output'))
-    os.chdir(os.path.join(directory, 'output')) # change directory to process
-    a = Visualizer(net_source,net_ckpt,input_path)
-    #a.vis()
+    a = Visualizer(net_source,net_ckpt,input_path,os.path.join(directory, 'output'))
+    #os.chdir(os.path.join(directory, 'output')) # change directory to process
+    return_files,model_info = a.vis()
+
+    # find the path to client
+    parent = os.path.abspath(os.path.join(BASE_DIR, os.pardir))
+
+    target_dir = os.path.join(parent,'client','public',model_id)
+    if os.path.exists(target_dir):
+        os.rmdir(target_dir)
+    os.makedirs(target_dir,exist_ok=True)
+
+    for file in return_files:
+        output_path = os.path.join(target_dir,file['image_name'])
+        cv2.imwrite(output_path,file['image'])
+        cv2.imwrite(os.path.join(directory,'output',file['image_name']), file['image'])
+    with open(os.path.join(target_dir,'output.json'),'w') as f:
+        json.dump(model_info,f)
+    with open(os.path.join(directory,'output','output.json'),'w') as f:
+        json.dump(model_info,f)
 
 def get_images(request):
     return HttpResponse(request)
