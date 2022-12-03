@@ -53,7 +53,7 @@ def run_model(model_id):
     # find the path to client
     parent = os.path.abspath(os.path.join(BASE_DIR, os.pardir))
 
-    target_dir = os.path.join(parent,'client','public','running')
+    target_dir = os.path.join(parent,'client','public',model_id)
     if os.path.exists(target_dir):
         os.rmdir(target_dir)
     os.makedirs(target_dir,exist_ok=True)
