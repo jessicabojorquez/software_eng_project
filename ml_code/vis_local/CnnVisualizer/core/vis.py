@@ -19,6 +19,17 @@ import matplotlib.pyplot as plt
 
 
 class Visualizer():
+    """Visualizer class for CNN models. Takes care of running the Grad-CAM algorithm.
+
+    :param model_code: python file that defines the model structure
+    :type model_code: str
+
+    :param model_ckpt: .pt file that includes the saved weights for the model. Generally saved with torch.save(...)
+    :param model_ckpt: str
+
+    :param input_path: path to the input image we want to test
+    :param input_path: str
+    """
     def __init__(self, model_code, model_ckpt, input_path, output_path):
         copy2(model_code, '.')  # Bring .py file into correct directory
 
@@ -38,6 +49,9 @@ class Visualizer():
         return
 
     def get_struct(self):
+        """Parses the structure of the inputted model to get relevant information and create an internal dictionary 
+        that includes the necessary info for later steps.
+        """
 
         # change print to some out file
         orig_stdout = sys.stdout
@@ -111,6 +125,10 @@ class Visualizer():
         return struct
 
     def vis(self):
+        """Does the heavy-lifting of running the Grad-CAM algorithm. First identifies which layers we are interested in, then initializes the GradCAM object
+        with these. After running the algorithm, converts the outputs in the to heatmap color format for visualization. Then converts the outputs into the
+        json format that the backend and frontend expect
+        """
 
         # Choose which layers we want to visualize heatmaps for
         all_layers = [key for key in list(dict(self.model.named_modules()).keys()) if (key != '' and 'fc' not in key)]
