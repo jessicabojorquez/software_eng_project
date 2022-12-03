@@ -2,6 +2,14 @@
 <script>
 import uploadRequest from "../../API/API.js"
 // import axios from 'axios'
+/**
+ * Upload Page
+ * @vue-data {Object} form_data - The FormData object containing the user files
+ * @vue-data {Boolean} isActive - A value used to control which elements are visible or hidden
+ * @vue-event {Null} upload - the wrapper function for the axios POST to send the files to the server
+ * @vue-event {File} add_file - The function to properly add correct files to the formData object
+ * @vue-event {Boolean} toggle - Changes what is active on the current page
+ */
 export default {
     data() {
         return {
@@ -33,15 +41,6 @@ export default {
             console.log(this.form_data.getAll('pth'));
             console.log(this.form_data.getAll('model'));
             this.test = this.form_data.getAll('image');
-
-        },
-        upload2() {
-            var delayInMilliseconds = 2000; //1 second
-
-            setTimeout(function () {
-                window.location.href = "output.html?name=test";
-            }, delayInMilliseconds);
-            this.toggle();
 
         },
         toggle() {

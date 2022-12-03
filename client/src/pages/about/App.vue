@@ -75,82 +75,11 @@ body {
     background-color: beige;
 }
 
-/*
-    .top {
-        background-color: ivory; 
-    }*/
-
 .bottom-container {
     position: relative;
     background-color: ivory;
     height: 600px;
 }
-
-.split {
-    position: absolute;
-    width: 50%;
-    height: 150%;
-    /*600px;*/
-    font-family: Arial;
-    color: chocolate;
-    /*border: none;*/
-    /*border-color: red;*/
-    border-radius: 10px
-        /*round corner*/
-        /*box-shadow: 0px 0px 2px 2px rgb(0,0,0)*/
-        /*padding:15px;
-        min-height:30px; 
-        min-width: 120px;*/
-
-
-}
-
-.left-button {
-    left: 0%;
-    background-color: cornsilk;
-
-}
-
-.right-button {
-    right: 0%;
-    background-color: cornsilk;
-}
-
-.right-button:hover {
-    background-color: cornflowerblue;
-    transition: 0.5s;
-    box-shadow: 0 0 0 4px DarkOliveGreen;
-}
-
-.left-button:hover {
-    background-color: cornflowerblue;
-    transition: 0.5s;
-    box-shadow: 0 0 0 4px DarkOliveGreen;
-}
-
-.right-button:focus {
-    outline-color: transparent;
-    outline-style: solid;
-    box-shadow: 0 0 0 4px olive;
-}
-
-.left-button:focus {
-    outline-color: transparent;
-    outline-style: solid;
-    box-shadow: 0 0 0 4px olive;
-}
-
-.right-button:active {
-    background-color: #ffbf00;
-}
-
-.left-button:active {
-    background-color: #ffbf00;
-}
-
-
-
-
 
 /*Navigation Bar*/
 .navbar {

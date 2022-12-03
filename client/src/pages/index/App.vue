@@ -1,7 +1,12 @@
 <script>
-
+/**
+ * Index Page
+ * @vue-event {Null} upload_func  - Changes page to /uploadmodel.html
+ * @vue-event {Null} use_func  - Changes page to /library.html
+ */
 export default {
     methods: {
+
         upload_func() {
             window.location.href = "uploadmodel.html";
         },
@@ -20,28 +25,6 @@ export default {
     </head>
 
     <body>
-
-        <!-- ADDED <a> TAG TO TRY TO DO THE GOVER THING ON THE BUTTON WITH DIFF color
-    MIGHT NEED OT WATCH TUTORIAL TO SEE HOW TO CHANGE THAT   
-    i DO HAVE A BUTTON ABOVE FOR TESTING
-    THE COLOR GREEN ONT HE BUTOTN IS GIVING ISSUES
-
-    ********
-    TRY TO REMOVE THE COLOR GREEN AND SEE IF ITS HOVERS 
--->
-
-        <!--
-<div class="top" id="top">
-    <div class="centered">
-        <h2>Page Tittle</h2>
-        <p>Some text.</p>
-    </div>
-    <button class="hi">hi
-
-        <img src="img_avatar.png" alt="Avatar man">
-    </button>
-</div>-->
-        <!-- Navbar-->
         <header class="header">
             <nav class="navbar">
                 <div class="top-container"><a href="#" class="navbar-logo text-uppercase font-weight-bold">See-NN</a>
@@ -64,12 +47,10 @@ export default {
 
 
             <button @click="upload_func()" type="button" class="split left-button" id="upload-button">
-                <!--<div class="centered">-->
                 <img src="../../assets/icons8-upload-50.png" alt="Avatar woman">
                 <h2>Upload Model</h2>
                 <p>Upload your own model.</p>
 
-                <!--</div>-->
             </button>
 
 
@@ -93,11 +74,6 @@ body {
     background-color: beige;
 }
 
-/*
-    .top {
-        background-color: ivory; 
-    }*/
-
 .bottom-container {
     position: relative;
     background-color: ivory;
@@ -108,17 +84,10 @@ body {
     position: absolute;
     width: 50%;
     height: 100%;
-    /*600px;*/
     font-family: Arial;
     color: white;
-    /*border: none;*/
-    /*border-color: red;*/
     border-radius: 10px
-        /*round corner*/
-        /*box-shadow: 0px 0px 2px 2px rgb(0,0,0)*/
-        /*padding:15px;
-        min-height:30px; 
-        min-width: 120px;*/
+
 
 
 }
@@ -132,7 +101,6 @@ body {
 .right-button {
     right: 0%;
     background-color: DarkKhaki;
-    /*DarkOliveGreen; */
 }
 
 .right-button:hover {
