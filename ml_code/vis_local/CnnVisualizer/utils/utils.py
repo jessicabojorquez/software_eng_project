@@ -8,15 +8,33 @@ import cv2
 
 
 class OneImageDataset(Dataset):
+    """OneImageDataset: A pytorch dataset that returns only 1 image. Used for testing
+
+    :param input_path: the filename of the one image
+    :type input_path: str
+    :param transform: transform to be applied to the image before returning
+    :type transform: torchvision.transform, optional
+    
+    """
     def __init__(self,input_path,transform=None):
+        """
+        Constructor
+        """
         self.input_path = [input_path]
         self.transform = transform
 
 
     def __len__(self):
+        """Returns the length of this dataset. In this case always 1
+        """
         return 1
 
     def __getitem__(self, idx):
+        """Returns a single item identified by idx
+    
+        :param idx: the index of the item to retrieve
+        :type idx: int
+        """
         path = self.input_path[idx]
         img = cv2.imread(path,cv2.IMREAD_UNCHANGED)
 
