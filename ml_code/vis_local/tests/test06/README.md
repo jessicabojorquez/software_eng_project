@@ -1,1 +1,1 @@
-Model trained on CIFAR-10 data
+Model trained on CIFAR-10

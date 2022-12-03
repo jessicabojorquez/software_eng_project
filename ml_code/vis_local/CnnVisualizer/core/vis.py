@@ -145,10 +145,13 @@ class Visualizer():
 
             # Get heatmap from GradCAM and manipulate it to visualize it easily
             heatmap = grayscale_cam
-            input_tensor = (self.input_tensor.squeeze(0).squeeze(0)).numpy()
-
-            input_tensor2 = np.stack([input_tensor, input_tensor, input_tensor], axis=2)
+            if self.input_shape[0] != 3:
+                input_tensor = (self.input_tensor.squeeze(0).squeeze(0)).numpy()
+                input_tensor2 = np.stack([input_tensor, input_tensor, input_tensor], axis=2)
+            else:
+                input_tensor2 = torch.permute(self.input_tensor.squeeze(0),(2,1,0)).permute(1,0,2).numpy()
             img = input_tensor2 * 255
+
             heatmap = cv2.resize(heatmap, (img.shape[1], img.shape[0]))
             heatmap = np.stack([heatmap, heatmap, heatmap], axis=2)
             heatmap = np.uint8(255 * heatmap)
@@ -160,7 +163,7 @@ class Visualizer():
             #print(image_name)
             output_content[layer_idx]['output_path'] = image_name
 
-            #cv2.imwrite(image_name, superimposed_img)
+            cv2.imwrite(image_name, superimposed_img)
             temp_dict = {
                 'image':superimposed_img,
                 'image_name': image_name,
