@@ -64,7 +64,7 @@ def test_05(): # Test where the model with 3 layer input
     a.vis()
     return True
 
-def test_05(): # Test where the model with 3 layer input and fails
+def test_06(): # Test where the model with 3 layer input and fails
     net_soucre = os.path.join('tests','test06','source','Net.py')
     net_ckpt = os.path.join('tests', 'test06', 'source', 'model.pth')
     input_path = os.path.join('tests', 'test06', 'source', 'img2.jpg')

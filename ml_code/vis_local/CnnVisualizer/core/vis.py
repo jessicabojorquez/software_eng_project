@@ -111,13 +111,10 @@ class Visualizer():
         return struct
 
     def vis(self):
-        # os.makedirs('~/output')
 
         # Choose which layers we want to visualize heatmaps for
         all_layers = [key for key in list(dict(self.model.named_modules()).keys()) if (key != '' and 'fc' not in key)]
-        # self.target_layers = [getattr(self.model,all_layers[0])]
-        #
-        # self.target_layers = [self.model.conv1, self.model.pool, self.model.conv2]
+
         layer_idx = 0
         target = []
         target_name = []
@@ -160,18 +157,15 @@ class Visualizer():
             superimposed_img = heatmap * 0.5 + img * 0.5
 
             image_name = os.path.join("map_{:03d}.jpg".format(layer_idx + 1))
-            #print(image_name)
             output_content[layer_idx]['output_path'] = image_name
 
-            cv2.imwrite(image_name, superimposed_img)
+            #cv2.imwrite(image_name, superimposed_img)
             temp_dict = {
                 'image':superimposed_img,
                 'image_name': image_name,
             }
             return_files.append(temp_dict)
             layer_idx += 1
-
-        # print(struct_info)
 
         # Updated information
         self.model_info.update({'layer_info': output_content})
