@@ -1,7 +1,7 @@
 import sys
 
 from ..utils import *
-#netron.start('net.pth')
+# netron.start('net.pth')
 
 from torchsummary import summary
 import torch
@@ -13,66 +13,20 @@ from pytorch_grad_cam.utils.model_targets import ClassifierOutputTarget
 from torchvision import datasets, transforms
 from pytorch_grad_cam.utils.image import show_cam_on_image
 import matplotlib.pyplot as plt
-#os.environ["CUDA_VISIBLE_DEVICES"] = '1'
 
-def nothing():
-    input_shape = (1, 28, 28)
-    model = torch.load('net.pth', map_location=torch.device('cuda' if torch.cuda.is_available() else 'cpu'))
-    train_ds = datasets.MNIST('./data', train=True, download=True,
-                              transform=transforms.Compose([transforms.ToTensor()]))
 
-    str1 = summary(model, input_size=input_shape)
-    # inputs = torch.zeros(input_shape)
-    # with SummaryWriter() as writer:
-    #     writer.add_graph(model=model.cpu(),input_to_model=inputs,verbose=False)
-    print(model.state_dict().keys())
-
-    target_layers = [model.conv1, model.pool, model.conv2]
-    print(target_layers)
-
-    cam = GradCAM(model=model, target_layers=target_layers, use_cuda=True)
-    targets = [ClassifierOutputTarget(9)]
-
-    input_tensor = train_ds[100][0].unsqueeze(0)
-    print(input_tensor.shape)
-    # You can also pass aug_smooth=True and eigen_smooth=True, to apply smoothing.
-    grayscale_cam = cam(input_tensor=input_tensor, targets=targets)
-
-    # In this example grayscale_cam has only one image in the batch:
-    grayscale_cam = grayscale_cam[0, :]
-    print(grayscale_cam.shape)
-    print(grayscale_cam.dtype)
-    # grayscale_cam = grayscale_cam*255
-    # grayscale_cam = grayscale_cam.astype(np.uint8)
-    print(grayscale_cam.dtype)
-    print(grayscale_cam)
-    # cv2.imshow('image',grayscale_cam)
-    # cv2.waitKey(0)
-
-    # plt.imshow(grayscale_cam)
-    # plt.show()
-
-    heatmap = grayscale_cam
-    input_tensor = (input_tensor.squeeze(0).squeeze(0)).numpy()
-    input_tensor = np.stack([input_tensor, input_tensor, input_tensor], axis=2)
-    # img = cv2.imread('./data/Elephant/data/05fig34.jpg')
-    img = input_tensor * 255
-    # plt.imshow(img)
-    # plt.show()
-    heatmap = cv2.resize(heatmap, (img.shape[1], img.shape[0]))
-    heatmap = np.uint8(255 * heatmap)
-    heatmap = cv2.applyColorMap(heatmap, cv2.COLORMAP_JET)
-    superimposed_img = heatmap * 0.5 + img * 0.5
-    cv2.imwrite('./map.jpg', superimposed_img)
+# os.environ["CUDA_VISIBLE_DEVICES"] = '1'
 
 
 class Visualizer():
-    def __init__(self,model_code,model_ckpt,input_path):
-        copy2(model_code,'.') # Bring .py file into correct directory
+    def __init__(self, model_code, model_ckpt, input_path, output_path):
+        copy2(model_code, '.')  # Bring .py file into correct directory
 
         # Load the model from the .pth file -- also does some error checking and handling
+        # self.model = torch.load(model_ckpt, map_location=torch.device('cuda' if torch.cuda.is_available() else 'cpu'))
         try:
             self.model = torch.load(model_ckpt, map_location=torch.device('cuda' if torch.cuda.is_available() else 'cpu'))
+            print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
         except Exception as e:
             if str(e) == "Ran out of input" or str(e).find("unpickling") >= 0: # Invalid input file
                 print("Invalid .pth file")
@@ -80,21 +34,19 @@ class Visualizer():
 
         self.input_tensor = load_input(input_path)
         self.input_shape = self.input_tensor.shape
-
+        self.output_path = output_path
         return
 
     def get_struct(self):
 
-
-
         # change print to some out file
         orig_stdout = sys.stdout
-        with open('model_struct.txt','w') as f:
+        with open('model_struct.txt', 'w') as f:
             sys.stdout = f
             struct = summary(self.model, input_size=self.input_shape)
             sys.stdout = orig_stdout
 
-        with open('model_struct.txt','r') as f:
+        with open('model_struct.txt', 'r') as f:
             struct_info = f.readlines()
 
         model_content = []
@@ -103,11 +55,7 @@ class Visualizer():
         trainable_params = 0
         non_trainable_params = 0
 
-
-
         start = False
-
-
 
         for each in struct_info:
             if each.startswith("====") and start == False:
@@ -118,7 +66,7 @@ class Visualizer():
                     continue
                 else:
                     if each.startswith("Total params:"):
-                        info = each.replace("Total params:",'').replace(' ','').replace('\n','').replace(',','')
+                        info = each.replace("Total params:", '').replace(' ', '').replace('\n', '').replace(',', '')
                         total_params = int(info)
                         # print(total_params)
                     elif each.startswith("Trainable params:"):
@@ -127,8 +75,8 @@ class Visualizer():
                         # print(trainable_params)
                     # start processing with conv and pooling info
                     elif each.startswith("  "):
-                        temp_info = each.replace('\n','').split(" ")
-                        temp_info = [each for each in temp_info if len(each)!=0]
+                        temp_info = each.replace('\n', '').split(" ")
+                        temp_info = [each for each in temp_info if len(each) != 0]
 
                         layer_type = temp_info[0].lower()[:-2]
                         if 'conv' in layer_type or 'pool' in layer_type:
@@ -137,41 +85,33 @@ class Visualizer():
                             # print(shape_info)
                             for size in shape_info:
                                 # print(size)
-                                size = size.replace('[', '').replace(']', '').replace(',','')
+                                size = size.replace('[', '').replace(']', '').replace(',', '')
                                 size = int(size)
                                 temp_shape.append(size)
 
-                            num_param = temp_info[-1].replace('\n','').replace(',','')
+                            num_param = temp_info[-1].replace('\n', '').replace(',', '')
                             num_param = int(num_param)
                             model_content.append({
                                 'layer_type': layer_type,
                                 'output_shape': temp_shape,
                                 'num_param': num_param,
-                                'output_path' : ''
+                                'output_path': ''
                             })
                         else:
                             continue
         self.model_info = {
-            'info':{
+            'info': {
                 'total_params': total_params,
                 'trainable_params': trainable_params,
                 'non_trainable_params': total_params - trainable_params
             },
-            'layer_info':model_content
+            'layer_info': model_content
         }
-
-
 
         return struct
 
-
-
-
-
-
-
     def vis(self):
-
+        # os.makedirs('~/output')
 
         # Choose which layers we want to visualize heatmaps for
         all_layers = [key for key in list(dict(self.model.named_modules()).keys()) if (key != '' and 'fc' not in key)]
@@ -181,19 +121,16 @@ class Visualizer():
         layer_idx = 0
         target = []
         target_name = []
-
+        return_files = []
         self.input_shape = self.input_tensor.squeeze(0).shape
         self.get_struct()
-
 
         num_layers = len(all_layers)
         self.model_info['info'].update({'num_layers': num_layers})
         output_content = self.model_info['layer_info']
 
-
-
         for layer in all_layers:
-            target.append(getattr(self.model,layer))
+            target.append(getattr(self.model, layer))
             target_name.append(layer)
             # Create GradCAM object with layers and model specified
             cam = GradCAM(model=self.model, target_layers=target, use_cuda=True if torch.cuda.is_available() else False)
@@ -213,26 +150,29 @@ class Visualizer():
             input_tensor2 = np.stack([input_tensor, input_tensor, input_tensor], axis=2)
             img = input_tensor2 * 255
             heatmap = cv2.resize(heatmap, (img.shape[1], img.shape[0]))
-            heatmap = np.stack([heatmap,heatmap,heatmap],axis=2)
+            heatmap = np.stack([heatmap, heatmap, heatmap], axis=2)
             heatmap = np.uint8(255 * heatmap)
             heatmap = cv2.applyColorMap(heatmap, cv2.COLORMAP_JET)
 
-
             superimposed_img = heatmap * 0.5 + img * 0.5
 
-            image_name = "./map_{:03d}.jpg".format(layer_idx+1)
+            image_name = os.path.join("map_{:03d}.jpg".format(layer_idx + 1))
+            #print(image_name)
             output_content[layer_idx]['output_path'] = image_name
 
-
-            cv2.imwrite(image_name, superimposed_img)
+            #cv2.imwrite(image_name, superimposed_img)
+            temp_dict = {
+                'image':superimposed_img,
+                'image_name': image_name,
+            }
+            return_files.append(temp_dict)
             layer_idx += 1
 
+        # print(struct_info)
 
-        #print(struct_info)
-
+        # Updated information
         self.model_info.update({'layer_info': output_content})
-        with open('output.json', 'w') as f:
-            json.dump(self.model_info,f)
+        # with open(os.path.join('output.json'), 'w') as f:
+        #     json.dump(self.model_info, f)
 
-
-        return
+        return return_files,self.model_info

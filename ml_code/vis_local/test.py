@@ -21,7 +21,7 @@ def test_01(): # Test where the model successfully predicts the class
     net_soucre = os.path.join('tests','test01','source','Net.py')
     net_ckpt = os.path.join('tests', 'test01', 'source', 'net.pth')
     input_path = os.path.join('tests', 'test01', 'source', 'img.jpg')
-    a = Visualizer(net_soucre,net_ckpt,input_path)
+    a = Visualizer(net_soucre,net_ckpt,input_path,'')
     a.vis()
     return True
 
@@ -29,7 +29,7 @@ def test_02(): # Test where the model is not able to predict the class
     net_soucre = os.path.join('tests','test01','source','Net.py')
     net_ckpt = os.path.join('tests', 'test01', 'source', 'net.pth')
     input_path = os.path.join('tests', 'test02', 'source', 'img.jpg')
-    a = Visualizer(net_soucre,net_ckpt,input_path)
+    a = Visualizer(net_soucre,net_ckpt,input_path,'')
     a.vis()
     return True
 
@@ -38,7 +38,7 @@ def test_03(): # test where input image and net don't match
     net_ckpt = os.path.join('tests', 'test03', 'source', 'net.pth')
     input_path = os.path.join('tests', 'test03', 'source', 'img.jpg')
     try:
-        a = Visualizer(net_source, net_ckpt, input_path)
+        a = Visualizer(net_source, net_ckpt, input_path,'')
         a.vis()
     except ValueError:
         return True #This didn't work -- as expected
@@ -49,7 +49,7 @@ def test_04(): # test where the .pth file is invalid
     net_ckpt = os.path.join('tests', 'test04', 'source', 'net.pth')
     input_path = os.path.join('tests', 'test04', 'source', 'img.jpg')
     try:
-        a = Visualizer(net_source, net_ckpt, input_path)
+        a = Visualizer(net_source, net_ckpt, input_path,'')
         a.vis()
     except ValueError:
         return True # This didn't work as expected
