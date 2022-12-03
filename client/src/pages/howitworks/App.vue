@@ -48,6 +48,7 @@
                 the frontend and then visualized with Vue.js.
             </p>
 
+                After running the algorithm, we package the results in a json file which is passed back from our backend the frontend and then visualized with Vue.js.
         </div>
 
         <div class="bottom-container" id="bottom-container">

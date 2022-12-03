@@ -15,11 +15,11 @@ Our website will allow users to upload their trained models and view both intera
 (please fill the missing part)
 
 ## Installation
-Our installation instructions require conda to install python packages. Execute the following commands to set up the environment for our project:
+Our installation instructions require conda to install python packages. Conda installation instructions for your operating system can be found here: https://conda.io/projects/conda/en/latest/user-guide/install/index.html#. Once you have conda installed, execute the following commands to set up the environment for our project:
 ```shell
 conda create -n see_nn python==3.8
 conda activate see_nn
-conda install pytorch torchvision torchaudio -c pytorch
+conda install pytorch torchvision torchaudio matplotlib -c pytorch
 pip install opencv-python
 pip install grad-cam
 pip install torchsummary
@@ -59,7 +59,7 @@ Note: 8080 is the default port to deploy to, but if that is busy, a different po
 
 ## Contact
 * Jessica Bojorquez (email)
-* Rishi Upadhyay ()
+* Rishi Upadhyay (rishiu@ucla.edu)
 * Sicheng Mo (smo3@ucla.edu)
 * Liyang Huang ()
 * Deven Douglas (devendouglas@gmail.com)
